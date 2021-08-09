@@ -1,0 +1,17 @@
+body{
+    background-color: #f4f6f9 !important;
+    padding: 50px 0;
+}
+
+/*header image*/
+.add_member{
+    width: 10%;
+    display: block;
+    margin: 20px auto;
+}
+
+/*footer*/
+.footer{
+    padding: 10px 0;
+    background-color: #fff;
+}

@@ -1,0 +1,17 @@
+body{
+    background-color: #f4f6f9;
+}
+
+/*update button on the table*/
+.edit_button{
+    display: block;
+    padding: 5px 30px;
+    margin-right: 0 !important;
+}
+
+/*delete button on the table*/
+.delete_button{
+    display: block;    
+    padding: 5px 30px;
+    margin-right: 0 !important;
+}

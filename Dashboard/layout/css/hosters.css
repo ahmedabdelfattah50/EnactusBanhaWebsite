@@ -1,0 +1,10 @@
+body{
+    background-color: #f4f6f9;
+}
+
+.table_icon{
+    color:#eee;
+    display: block;    
+    padding: 5px 20px;
+    margin-right: 0 !important;
+}

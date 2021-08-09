@@ -1,0 +1,87 @@
+body{
+    background-color: #f4f6f9 !important;
+    padding: 50px 0;
+}
+
+/*header image*/
+.comm_img{
+    width: 10%;
+    display: block;
+    margin: 20px auto;
+}
+
+/*footer*/
+.footer{
+    padding: 10px 0;
+    background-color: #fff;
+}
+.item {
+    background-color: #efefef;
+    margin-bottom: 30px;
+    padding: 40px 0;
+    position: relative;
+    background-color: #fff;
+    border-radius: 26px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 3px 6px 1px rgba(53, 54, 102, .3);
+    transition: all .3s ease-in-out;
+    height: 330px !important;
+}
+
+.item:hover {
+    box-shadow: 4px 4px 8px 6px rgba(53, 54, 102, .3);
+    }
+
+.item img {
+    width: 100px;
+    display: block;
+    margin: auto;
+}
+
+.item h3 {
+    margin-bottom: 5px;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.item p {
+    padding: 0 25px !important;
+    margin: 20px 0;
+    color: #333;
+    letter-spacing: .5px;
+    max-height: 80px;
+    overflow: auto;
+}
+
+.item span {
+    display: block;
+}
+.members_num {
+    font-size: 13px;
+    font-weight: 400;
+    color: #888;
+    padding-bottom: 30px;
+    padding-top: 5px;
+}
+
+
+i {
+    font-size: 15px;
+    color: #eee;
+    margin-left: 5px;
+    transition: all .3s ease-in-out;
+}
+.team_button{
+
+    text-decoration: none;
+    color: #eee !important;
+    border-radius: 25px;
+    transition: all .5s ease;
+}
+.team_button:hover {
+    background-color: #fff;
+    color: #1488f0 !important;
+}
+.team_button:hover i {
+    color: #1488f0 !important;
+}
