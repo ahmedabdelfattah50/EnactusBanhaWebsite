@@ -93,6 +93,24 @@ function getAllData($table){
 }
 
 
+// select newMembers
+function selectNewMembers(){
+    global $con; 
+    $stmt = $con->prepare("SELECT * FROM members Where old_member=0");
+    $stmt->execute(array());
+    return $stmt->fetchAll();
+}
+
+
+// select oldMembers
+function selectOldMembers(){
+    global $con; 
+    $stmt = $con->prepare("SELECT * FROM members Where old_member=1");
+    $stmt->execute(array());
+    return $stmt->fetchAll();
+}
+
+
 /*
 ==========================  
   get all data with id  By/ Amr Mohamed
@@ -162,7 +180,12 @@ function  insert_hoster ($first_name , $last_name , $email , $password , $phone 
     <script>
         toastr.success('Great , Hoster has been successfully added .')
     </script>";
-    header("Refresh:3;url=hosters.php");
+
+    if($old == 0){
+        header("Refresh:3;url=hosters.php?type=newBoard");
+    } else if($old == 1) {
+        header("Refresh:3;url=hosters.php?type=oldBoard");
+    }
 }
 
 /*
@@ -215,6 +238,24 @@ count Rows from Database By/ Amr Mohamed
 function count_users($colume,$databname){
     global $con;
     $stmt = $con->prepare("SELECT COUNT($colume) From $databname");
+    $stmt->execute();
+    $rows = $stmt->fetchColumn();
+    return $rows;
+}
+
+// --- count new Members
+function countNewMembers(){
+    global $con;
+    $stmt = $con->prepare("SELECT COUNT(id) From members Where old_member=0");
+    $stmt->execute();
+    $rows = $stmt->fetchColumn();
+    return $rows;
+}
+
+// --- count old Members
+function countOldMembers(){
+    global $con;
+    $stmt = $con->prepare("SELECT COUNT(id) From members Where old_member=1");
     $stmt->execute();
     $rows = $stmt->fetchColumn();
     return $rows;
@@ -422,7 +463,7 @@ function selectSeason(){
 // select Position Name
 function selectPosition(){
     global $con; 
-    $stmt = $con->prepare("SELECT * FROM position");
-    $stmt->execute(array());
+    $stmt = $con->prepare("SELECT * FROM position Where name!=?");
+    $stmt->execute(array('Member'));
     return $stmt->fetchAll();
 }

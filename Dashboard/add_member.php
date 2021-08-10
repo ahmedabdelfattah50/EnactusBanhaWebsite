@@ -57,6 +57,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["first_name"]) && !empt
     }    
     // insert_admin($name,$email,$hased,$gender);
 };
+if($_GET['type'] == 'newMember') {
+    $memberType = 'newMember';
+} else if($_GET['type'] == 'oldMember') {
+    $memberType = 'oldMember';
+}
 ?>
 
 <div class="container mb-3">
@@ -162,16 +167,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["first_name"]) && !empt
             <label>Member Photo</label>
             <input style="direction: ltr;padding:0" name="img" type="file" class="form-control">
         </div>
+        
+        
+        <div class="form-group col-md-6 d-none">
+            <?php 
+            if($memberType == "newMember") {?>
+                <input style="direction: ltr;padding:0" name="old" type="text" value="0" class="form-control">
+            <?php
+            } else if($memberType == "oldMember"){?>
+                <input style="direction: ltr;padding:0" name="old" type="text" value="1" class="form-control">
+            <?php
+            }
+            ?>
+        </div>
 
-                
-        <div class="form-group col-md-6">
+        
+
+        <!-- <div class="form-group col-md-6">
             <label for="old">Old Member ?</label>
             <select class="custom-select ui search dropdown"  name="old" id="old" required>
                 <option selected disabled value="">Choose...</option>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
             </select>
-        </div>
+        </div> -->
                 
         <div class="form-group col-md-12">
             <label>About Member</label>

@@ -5,8 +5,17 @@ $page_name = "Enactus Members";
 $style = "members.css";
 $script = "members.js";
 include "init.php";
+
+if($_GET['type'] == 'newMembers') {
+  $members_data = selectNewMembers();
+  $memberType = 'newMembers';
+} else if($_GET['type'] == 'oldMembers') {
+  $members_data = selectOldMembers();
+  $memberType = 'oldMembers';
+}
+
 if(isset($_SESSION['first_name'])){
-    $members_data = getAllData("members");
+    // $members_data = getAllData("members");
     $i = 1;
 ?>
 
@@ -24,7 +33,15 @@ if(isset($_SESSION['first_name'])){
             <!-- ./card-header -->
             <div class="card-body">
               <div class="hosters_options mb-2">
-                <a href="add_member.php" class="btn btn-info">Add <i class="fas fa-user-plus ml-1"></i></a>
+                <?php 
+                  if($memberType == "newMembers"){?>
+                    <a href="add_member.php?type=newMember" class="btn btn-info">Add <i class="fas fa-user-plus ml-1"></i></a>
+                <?php
+                  }else if($memberType == "oldMembers"){?>
+                    <a href="add_member.php?type=oldMember" class="btn btn-info">Add <i class="fas fa-user-plus ml-1"></i></a>
+                <?php
+                  }
+                ?>
               </div>
               <table class="table table-striped table-bordered table-hover table-responsive">
                 <thead>
@@ -38,6 +55,7 @@ if(isset($_SESSION['first_name'])){
                     <th>Collage</th>
                     <th>Collage Year</th>
                     <th>Update</th>
+                    <th>Profile</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
@@ -61,6 +79,7 @@ if(isset($_SESSION['first_name'])){
                     <td>
                       <a href="update_member.php?id=<?php echo  $members_data_info['id'];?>" class="edit_button btn btn-primary mr-3"> <i class="far fa-edit ml-1"></i></a>
                     </td>
+                    <td><a href="profile.php?from=members&id=<?php echo $members_data_info['id']?>" class="edit_button btn btn-warning"><i class="table_icon far fa-id-badge ml-1"></i></a></td>
                     <td>
                       <a href="delete.php?from=members&id=<?php echo  $members_data_info['id'];?>" class="btn btn-danger delete_button"><i class="far fa-trash-alt ml-1"></i></a>
                     </td>

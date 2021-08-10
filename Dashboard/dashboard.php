@@ -158,9 +158,15 @@
           <i class="fa fa-users fa-2x icon"></i>
         </div><!-- ./dashItem -->
         <div class="dashItem color4  rounded">
-          <h3 class="itemNum"><?php echo count_users("id","members"); ?></h3>
+          <h3 class="itemNum"><?php echo countNewMembers(); ?></h3>
           <h4 class="itemName">Members</h4>
-          <a href="members.php" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
+          <a href="members.php?type=newMembers" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
+          <i class="fal fa-user-circle icon"></i>
+        </div><!-- ./dashItem -->
+        <div class="dashItem color4  rounded">
+          <h3 class="itemNum"><?php echo countOldMembers(); ?></h3>
+          <h4 class="itemName">Old Members</h4>
+          <a href="members.php?type=oldMembers" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
           <i class="fal fa-user-circle icon"></i>
         </div><!-- ./dashItem -->
         <div class="dashItem color1  rounded">

@@ -39,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["first_name"]) && !empt
         update_member ($member_id,$first_name , $last_name , $email , $phone , $birthday ,$commity ,$season ,$university ,$collage_name ,$collage_year ,$about ,$facebook ,$twitter ,$insta ,$linked_in,$avatar,$old);
         move_uploaded_file($tmp_name,$destination);
         unlink("img/members/" . $result["img"]);
-    }else{
+    } else{
         echo "error";
     }    
     // insert_admin($name,$email,$hased,$gender);
@@ -53,7 +53,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["first_name"]) && !empt
 <p class="text-center mb-5 pb-3">From This Page You Can Update Member Information</p>
 <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data">
   <div class="form-row">
-
         <div class="form-group col-md-6">
             <label>First Name</label>
             <input style="direction: ltr;" value="<?php echo $result['first_name'];?>" name="first_name" type="text" class="form-control">
@@ -159,21 +158,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["first_name"]) && !empt
             </select>
         </div>
 
-
         <div class="form-group col-md-12">
             <label>About Member</label>
             <textarea name="about" class="form-control" placeholder="Some Info About member *" rows="4" autocomplete="off"><?php echo $result['about'];?></textarea>
         </div>
-
-        
-
-
   </div>
-  <button type="submit" class="btn btn-primary mb-5 mt-2">Add Member</button>
+  <button type="submit" class="btn btn-primary mb-5 mt-2">Update Member</button>
   <a class="btn btn-secondary pr-4 pl-4 ml-3 mb-5 mt-2" href="dashboard.php">Back</a>
 </form>
 </div>
-
 
 <div class="footer text-center">
             <strong>Copyright &copy; <?php echo date('Y'); ?> <a href="#">Enactus Benha - IT Team 2021</a>.</strong>

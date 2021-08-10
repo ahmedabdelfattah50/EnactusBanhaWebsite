@@ -49,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["first_name"]) && !empt
                 <script>
                     toastr.error('Sorry This Hoster (Email) is already excit.')
                 </script>";
-        }
+        } 
         else{
             insert_hoster ($first_name , $last_name , $email , $password , $phone , $birthday , $position , $commity ,$season ,$university ,$collage_name ,$collage_year ,$about ,$facebook ,$twitter ,$insta ,$linked_in,$avatar ,$old);
             move_uploaded_file($tmp_name,$destination);
