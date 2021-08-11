@@ -5,7 +5,7 @@ $page_name = "About US";
 $style = "members.css";
 $script = "";
 include "init.php";
-if(isset($_SESSION['first_name'])){
+if(isset($_SESSION['first_name'])){ 
     $members_data = getAllData("about_us");
     $i = 1;
 ?>
@@ -46,7 +46,7 @@ if(isset($_SESSION['first_name'])){
                     </td> 
                     <td><?php echo $members_data_info['content']?></td>
                     <td>
-                      <a href="update_about.php?id=<?php echo  $members_data_info['id'];?>" class="edit_button btn btn-primary mr-3"> <i class="far fa-edit ml-1"></i></a>
+                      <a href="update_about.php?id=<?php echo $members_data_info['id'];?>" class="edit_button btn btn-primary mr-3"> <i class="far fa-edit ml-1"></i></a>
                     </td>
                     
                   </tr>

@@ -176,9 +176,15 @@
           <i class="fa fa-users fa-2x icon"></i>
         </div><!-- ./dashItem -->
         <div class="dashItem color2  rounded">
-          <h3 class="itemNum">70</h3>
+          <h3 class="itemNum"><?php echo count_aboutUs_sections();?></h3>
           <h4 class="itemName">About US</h4>
           <a href="about.php" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
+          <i class="fa fa-users fa-2x icon"></i>
+        </div><!-- ./dashItem -->
+        <div class="dashItem color3 changColor rounded">
+          <h3 class="itemNum"><?php echo count_messages();?></h3>
+          <h4 class="itemName">Messages</h4>
+          <a href="get_messages.php" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
           <i class="fa fa-users fa-2x icon"></i>
         </div><!-- ./dashItem -->
         <div class="dashItem color3 changColor rounded">
@@ -186,14 +192,6 @@
           <h4 class="itemName">Event</h4>
           <a href="event.php" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
           <i class="fa fa-users fa-2x icon"></i>
-          
-        </div><!-- ./dashItem -->
-        <div class="dashItem color3 changColor rounded">
-          <h3 class="itemNum">150</h3>
-          <h4 class="itemName">Messages</h4>
-          <a href="get_messages.php" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
-          <i class="fa fa-users fa-2x icon"></i>
-          
         </div><!-- ./dashItem -->
         <div class="dashItem color4  rounded">
           <h3 class="itemNum">150</h3>

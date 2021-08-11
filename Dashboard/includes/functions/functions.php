@@ -261,6 +261,24 @@ function countOldMembers(){
     return $rows;
 }
 
+// --- count about us sections
+function count_aboutUs_sections(){
+    global $con;
+    $stmt = $con->prepare("SELECT COUNT(id) From about_us");
+    $stmt->execute();
+    $rows = $stmt->fetchColumn();
+    return $rows;
+}
+
+// --- count count_messages sections
+function count_messages(){
+    global $con;
+    $stmt = $con->prepare("SELECT COUNT(id) From contact");
+    $stmt->execute();
+    $rows = $stmt->fetchColumn();
+    return $rows;
+}
+
 /*
 ==========================  
 count Rows of old high board from Database By/ Amr Mohamed

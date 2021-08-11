@@ -62,6 +62,11 @@ if($_GET['type'] == 'newMember') {
 } else if($_GET['type'] == 'oldMember') {
     $memberType = 'oldMember';
 }
+
+$collageNames = selectCollage();
+$universityNames = selectUniversity();
+$commityNames = selectCommity();
+$seasonNames = selectSeason();
 ?>
 
 <div class="container mb-3">
@@ -101,13 +106,9 @@ if($_GET['type'] == 'newMember') {
             <label for="commity">Commity</label>
             <select class="custom-select ui search dropdown"  name="commity" id="commity" required>
                 <option selected disabled value="">Choose...</option>
-                <option value="IT">IT</option>
-                <option value="PM">PM</option>
-                <option value="HR">HR</option>
-                <option value="Presentation">Presentation</option>
-                <option value="Media">Media</option>
-                <option value="ER">ER</option>
-                <option value="Logistics">Logistics</option>
+                <?php foreach($commityNames as $commityName){?>
+                <option value="<?php echo $commityName['name']?>"><?php echo $commityName['name']?></option>
+                <?php } ?>
             </select>
         </div>
 
@@ -115,20 +116,30 @@ if($_GET['type'] == 'newMember') {
             <label for="season">Season</label>
             <select class="custom-select ui search dropdown"  name="season" id="season" required>
                 <option selected disabled value="">Choose...</option>
-                <?php for($i=1 ; $i<=date('Y')-2009 ; $i++){?>
-                <option value="<?php echo (2009 + $i - 1) . " / " . (2009 + $i)?>"><?php echo (2009 + $i - 1) . " / " . (2009 + $i)?></option>
-            <?php } ?>
+                <?php foreach($seasonNames as $seasonName){?>
+                <option value="<?php echo $seasonName['year']?>"><?php echo $seasonName['year']?></option>
+                <?php } ?>
             </select>
         </div>
 
         <div class="form-group col-md-6">
             <label>University</label>
-            <input style="direction: ltr;" name="university" type="text" class="form-control">
+            <select class="custom-select ui search dropdown"  name="university" id="collage_year" required>
+                <option selected disabled value="">Choose...</option>
+                <?php foreach($universityNames as $universityName){?>
+                <option value="<?php echo $universityName['name']?>"><?php echo $universityName['name']?></option>
+                <?php } ?>
+            </select>
         </div>
         
         <div class="form-group col-md-6">
             <label>Collage Name</label>
-            <input style="direction: ltr;" name="collage_name" type="text" class="form-control">
+            <select class="custom-select ui search dropdown"  name="collage_name" id="collage_year" required>
+                <option selected disabled value="">Choose...</option>
+                <?php foreach($collageNames as $collageName){?>
+                <option value="<?php echo $collageName['name']?>"><?php echo $collageName['name']?></option>
+                <?php } ?>
+            </select>
         </div>
         
         <div class="form-group col-md-6">
@@ -140,7 +151,6 @@ if($_GET['type'] == 'newMember') {
                 <?php } ?>
                 <option value="6">Graduated</option>
             </select>
-
         </div>
         
         <div class="form-group col-md-6">
@@ -180,25 +190,11 @@ if($_GET['type'] == 'newMember') {
             }
             ?>
         </div>
-
-        
-
-        <!-- <div class="form-group col-md-6">
-            <label for="old">Old Member ?</label>
-            <select class="custom-select ui search dropdown"  name="old" id="old" required>
-                <option selected disabled value="">Choose...</option>
-                <option value="1">Yes</option>
-                <option value="0">No</option>
-            </select>
-        </div> -->
                 
         <div class="form-group col-md-12">
             <label>About Member</label>
             <textarea name="about" class="form-control" placeholder="Some Info About member *" rows="4" autocomplete="off"></textarea>
         </div>
-
-        
-
 
   </div>
   <button type="submit" class="btn btn-primary mb-5 mt-2">Add Member</button>

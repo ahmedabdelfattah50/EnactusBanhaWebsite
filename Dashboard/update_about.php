@@ -5,7 +5,7 @@
   $style = "add_member.css";
   $script = "members.js";
   include "init.php";
-    if(isset($_SESSION['username'])){
+    if(isset($_SESSION['first_name'])){
         if (isset($_GET['id']) && is_numeric($_GET['id'])){
             $about_id = $_GET['id'];
             $result= getData_with_id("about_us",$about_id);
@@ -13,9 +13,7 @@
             {
                 $name         = $_POST['name'];
                 $content      = $_POST['content'];
-                update_about_us ($name , $content,$about_id);
-               
-               
+                update_about_us ($name , $content,$about_id);               
             }
 ?>
 
@@ -26,7 +24,6 @@
 <p class="text-center mb-5 pb-3">From This Page You Can Update About US Data</p>
 <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data">
   <div class="form-row">
-
         <div class="form-group col-md-6">
             <label>Section Name</label>
             <input style="direction: ltr;" value="<?php echo $result['section_name'];?>" name="name" type="text" class="form-control">
@@ -36,8 +33,6 @@
             <label>Section Content</label>
             <textarea style="direction: ltr;" value="" name="content"class="form-control"><?php echo $result['content'];?></textarea>
         </div>
-
-
   </div>
   <button type="submit" class="btn btn-primary mb-5 mt-2">update about us </button>
   <a class="btn btn-secondary pr-4 pl-4 ml-3 mb-5 mt-2" href="about.php">Back</a>
@@ -51,13 +46,14 @@
 </div>
 <?php
 
-}else{
-    header("location:about_us.php");
-}
+    } else{
+        header("location:about_us.php");
+    }
 }
 
 else{
-    header("location:dashboard.php");
+    // header("location:dashboard.php");
+    echo "NNNO";
 }
 
 ob_end_flush();
