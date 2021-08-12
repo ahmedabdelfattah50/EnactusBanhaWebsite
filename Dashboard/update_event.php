@@ -5,7 +5,7 @@
   $style = "add_member.css";
   $script = "members.js";
   include "init.php";
-    if(isset($_SESSION['username'])){
+    if(isset($_SESSION['first_name'])){
         if (isset($_GET['id']) && is_numeric($_GET['id'])){
             $event_id = $_GET['id'];
             $result= getData_with_id("event",$event_id);

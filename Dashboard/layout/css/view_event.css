@@ -10,7 +10,7 @@ body{
     margin: 20px auto;
 }
 
-img {
+.eventImgsTotal img {
     height: 300px !important;
     /* width: 100%; */
 }

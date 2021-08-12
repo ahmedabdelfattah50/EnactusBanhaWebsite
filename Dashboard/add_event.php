@@ -142,13 +142,6 @@ if(isset($_SESSION['first_name']))
         </div>
         <div class="form-group col-md-6">
             <label for="year">Season</label>
-            <!-- <select class="custom-select" name="year" id="year">
-                <option selected disabled value="">Choose...</option>
-                <php for($i=1 ; $i<=date('Y')-2009 ; $i++){?>
-                <option value="<php echo (2009 + $i + 1)?>"><php echo (2009 + $i + 1) ?></option>
-            <php } ?>
-            </select> -->
-
             <select class="custom-select ui search dropdown"  name="year" id="year" required>
                 <option selected disabled value="">Choose...</option>
                 <?php foreach($seasonNames as $seasonName){?>
@@ -160,106 +153,32 @@ if(isset($_SESSION['first_name']))
             <label>Main Image</label>
             <input style="direction: ltr;padding:0" name="mainImg" type="file" class="form-control">
         </div>
-        <div class="form-group col-md-6">
-            <label>Image 1</label>
-            <input style="direction: ltr;padding:0" name="img_1" type="file" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Image 2</label>
-            <input style="direction: ltr;padding:0" name="img_2" type="file" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Image 3</label>
-            <input style="direction: ltr;padding:0" name="img_3" type="file" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Image 4</label>
-            <input style="direction: ltr;padding:0" name="img_4" type="file" class="form-control">
-        </div>
+        <?php 
+            for($i=1; $i<=4; $i++){ ?>
+                <div class="form-group col-md-6">
+                    <label>Image <?php echo $i?></label>
+                    <input style="direction: ltr;padding:0" name="img_<?php echo $i?>" type="file" class="form-control">
+                </div>
+        <?php
+            }
+        ?>
         <div class="form-group col-md-6">
             <label>Images Drive link</label>
             <input style="direction: ltr;" name="driveLink" type="url" class="form-control">
         </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 1</label>
-            <input style="direction: ltr;" name="speaker_1" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 1</label>
-            <input style="direction: ltr;" name="speaker_1_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 2</label>
-            <input style="direction: ltr;" name="speaker_2" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 2</label>
-            <input style="direction: ltr;" name="speaker_2_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 3</label>
-            <input style="direction: ltr;" name="speaker_3" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 3</label>
-            <input style="direction: ltr;" name="speaker_3_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 4</label>
-            <input style="direction: ltr;" name="speaker_4" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 4</label>
-            <input style="direction: ltr;" name="speaker_4_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 5</label>
-            <input style="direction: ltr;" name="speaker_5" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 5</label>
-            <input style="direction: ltr;" name="speaker_5_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 6</label>
-            <input style="direction: ltr;" name="speaker_6" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 6</label>
-            <input style="direction: ltr;" name="speaker_6_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 7</label>
-            <input style="direction: ltr;" name="speaker_7" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 7</label>
-            <input style="direction: ltr;" name="speaker_7_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 8</label>
-            <input style="direction: ltr;" name="speaker_8" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 8</label>
-            <input style="direction: ltr;" name="speaker_8_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 9</label>
-            <input style="direction: ltr;" name="speaker_9" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 9</label>
-            <input style="direction: ltr;" name="speaker_9_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 10</label>
-            <input style="direction: ltr;" name="speaker_10" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 10</label>
-            <input style="direction: ltr;" name="speaker_10_link" type="url" class="form-control">
-        </div>
+        <?php 
+            for($i=1; $i<=10; $i++){ ?>
+                <div class="form-group col-md-6">
+                    <label>Speaker <?php echo $i?></label>
+                    <input style="direction: ltr;" name="speaker_<?php echo $i?>" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Link of Speaker <?php echo $i?></label>
+                    <input style="direction: ltr;" name="speaker_<?php echo $i?>_link" type="url" class="form-control">
+                </div>
+        <?php
+            }
+        ?>
         <div class="form-group col-md-12">
             <label>Event Location</label>
             <input style="direction: ltr;" name="eventLocation" type="text" class="form-control">

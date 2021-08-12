@@ -149,8 +149,7 @@ if(isset($_SESSION['first_name']))
             <input style="direction: ltr;" type="text" class="form-control" value="<?php echo $event_data['e_season']?>" readonly>
         </div>
         
-        <div class="d-flex flex-wrap">
-
+        <div class="d-flex flex-wrap eventImgsTotal">
        
             <!-- <div class="form-group col-md-6"> -->
                 <?php 
@@ -207,99 +206,43 @@ if(isset($_SESSION['first_name']))
                     }
                 ?>         
             <!-- </div> -->
-        </div>
 
-        <div class="form-group col-md-6">
-            <label>Images Drive link</label>
-            <input style="direction: ltr;" name="driveLink" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 1</label>
-            <input style="direction: ltr;" name="speaker_1" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 1</label>
-            <input style="direction: ltr;" name="speaker_1_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 2</label>
-            <input style="direction: ltr;" name="speaker_2" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 2</label>
-            <input style="direction: ltr;" name="speaker_2_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 3</label>
-            <input style="direction: ltr;" name="speaker_3" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 3</label>
-            <input style="direction: ltr;" name="speaker_3_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 4</label>
-            <input style="direction: ltr;" name="speaker_4" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 4</label>
-            <input style="direction: ltr;" name="speaker_4_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 5</label>
-            <input style="direction: ltr;" name="speaker_5" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 5</label>
-            <input style="direction: ltr;" name="speaker_5_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 6</label>
-            <input style="direction: ltr;" name="speaker_6" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 6</label>
-            <input style="direction: ltr;" name="speaker_6_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 7</label>
-            <input style="direction: ltr;" name="speaker_7" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 7</label>
-            <input style="direction: ltr;" name="speaker_7_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 8</label>
-            <input style="direction: ltr;" name="speaker_8" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 8</label>
-            <input style="direction: ltr;" name="speaker_8_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 9</label>
-            <input style="direction: ltr;" name="speaker_9" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 9</label>
-            <input style="direction: ltr;" name="speaker_9_link" type="url" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Speaker 10</label>
-            <input style="direction: ltr;" name="speaker_10" type="text" class="form-control">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Link of Speaker 10</label>
-            <input style="direction: ltr;" name="speaker_10_link" type="url" class="form-control">
-        </div>
+            <?php 
+                if($event_data['imgs_link'] == null){?>
+                <h2 class="form-group m-0 p-0 mb-3 col-md-6 alert alert-danger d-flex justify-content-center align-items-center">No images Link</h2>
+            <?php
+                } else {?>
+                    <a href="<?php echo $event_data['imgs_link']?>" class="form-group m-0 p-0 mb-3 col-md-6 alert alert-success d-flex justify-content-center align-items-center"> <h2>images Link</h2></a>
+
+                <!-- <img src="img/events/<php echo $event_data['imgs_link']?>" class="form-group col-md-6" alt="event image" style="width:100%;height:100%"> -->
+            <?php
+                }
+            ?> 
+        </div>        
+        <?php
+            for($i=1; $i<=10; $i++){    
+                if($event_data['speaker_' . $i] == null){?>
+            <?php
+                } else {?>
+                <div class="form-group col-md-6">
+                    <label>Speaker <?php echo $i?></label>
+                    <input style="direction: ltr;" value="<?php echo $event_data['speaker_' . $i] ?>" type="text" class="form-control" readonly>
+                </div>  
+                <div class="form-group col-md-6">
+                    <label>Link of Speaker <?php echo $i?></label>
+                    <input style="direction: ltr;" value="<?php echo $event_data['speaker_' . $i . '_link'] ?>" type="url" class="form-control" readonly>
+                </div>      
+            <?php
+                }
+            }   
+        ?> 
         <div class="form-group col-md-12">
             <label>Event Location</label>
-            <input style="direction: ltr;" name="eventLocation" type="text" class="form-control">
+            <input style="direction: ltr;" value="<?php echo $event_data['e_location']?>" type="text" class="form-control" readonly>
         </div>
         <div class="form-group col-md-12">
             <label>Description</label>
-            <textarea name="desc" class="form-control" placeholder="Some Info About Event *" rows="4" autocomplete="off"></textarea>
+            <textarea class="form-control" rows="4" autocomplete="off" readonly><?php echo $event_data['descrip']?></textarea>
         </div>
   </div>
   <button type="submit" class="btn btn-primary mb-5 mt-2">Add Event</button>
