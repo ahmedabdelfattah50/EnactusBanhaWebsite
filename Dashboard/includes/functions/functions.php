@@ -278,7 +278,6 @@ function count_messages(){
     $rows = $stmt->fetchColumn();
     return $rows;
 }
-
 /*
 ==========================  
 count Rows of old high board from Database By/ Amr Mohamed
@@ -427,15 +426,132 @@ function  updateEvent($name ,$year ,$desc, $link,$img,$event_id){
 ==========================
 */
 
-function addEvent($name ,$year ,$desc, $link,$img){
+function addEvent($name ,
+                  $year ,
+                  $mainImg, 
+                  $img_1, 
+                  $img_2, 
+                  $img_3, 
+                  $img_4, 
+                  $driveLink, 
+                  $speaker_1, 
+                  $speaker_1_link, 
+                  $speaker_2, 
+                  $speaker_2_link, 
+                  $speaker_3, 
+                  $speaker_3_link, 
+                  $speaker_4, 
+                  $speaker_4_link, 
+                  $speaker_5,
+                  $speaker_5_link, 
+                  $speaker_6, 
+                  $speaker_6_link, 
+                  $speaker_7, 
+                  $speaker_7_link, 
+                  $speaker_8, 
+                  $speaker_8_link, 
+                  $speaker_9, 
+                  $speaker_9_link,
+                  $speaker_10, 
+                  $speaker_10_link,  
+                  $eventLocation, 
+                  $desc
+                ){
     global $con;
-    $stmt = $con->prepare("INSERT INTO event(ename,eyear,img,descrip,link) VALUE(:eName,:year,:Img,:desc,:link)");
+    $stmt = $con->prepare("INSERT INTO event(
+        e_name,
+        e_season,
+        main_img,
+        imgs_link,
+        img_1,
+        img_2,
+        img_3,
+        img_4,
+        speaker_1,
+        speaker_1_link,
+        speaker_2,
+        speaker_2_link,
+        speaker_3,
+        speaker_3_link,
+        speaker_4,
+        speaker_4_link,
+        speaker_5,
+        speaker_5_link, 
+        speaker_6,
+        speaker_6_link, 
+        speaker_7,
+        speaker_7_link, 
+        speaker_8,
+        speaker_8_link, 
+        speaker_9,
+        speaker_9_link, 
+        speaker_10,
+        speaker_10_link, 
+        e_location,
+        descrip
+        ) VALUE(
+            :e_name, 
+            :e_season, 
+            :main_img, 
+            :imgs_link, 
+            :img_1, 
+            :img_2, 
+            :img_3, 
+            :img_4, 
+            :speaker_1, 
+            :speaker_1_link, 
+            :speaker_2, 
+            :speaker_2_link, 
+            :speaker_3,
+            :speaker_3_link, 
+            :speaker_4, 
+            :speaker_4_link, 
+            :speaker_5, 
+            :speaker_5_link, 
+            :speaker_6, 
+            :speaker_6_link, 
+            :speaker_7, 
+            :speaker_7_link, 
+            :speaker_8, 
+            :speaker_8_link, 
+            :speaker_9, 
+            :speaker_9_link, 
+            :speaker_10,
+            :speaker_10_link, 
+            :e_location,
+            :descrip) 
+            ");
     $stmt->execute(array(
-        ":eName"         =>  $name,
-        ":Img"          =>  $img,
-        ":desc"          =>  $desc,
-        ":year"          =>  $year,
-        ":link"          =>  $link
+        ":e_name" => $name, 
+        ":e_season" => $year, 
+        ":main_img" => $mainImg, 
+        ":imgs_link" => $img_1, 
+        ":img_1" => $img_2, 
+        ":img_2" => $img_3, 
+        ":img_3" => $img_4, 
+        ":img_4" => $driveLink, 
+        ":speaker_1" => $speaker_1, 
+        ":speaker_1_link" => $speaker_1_link, 
+        ":speaker_2" => $speaker_2, 
+        ":speaker_2_link" => $speaker_2_link, 
+        ":speaker_3" => $speaker_3,
+        ":speaker_3_link" => $speaker_3_link, 
+        ":speaker_4" => $speaker_4, 
+        ":speaker_4_link" => $speaker_4_link, 
+        ":speaker_5" => $speaker_5, 
+        ":speaker_5_link" => $speaker_5_link, 
+        ":speaker_6" => $speaker_6, 
+        ":speaker_6_link" => $speaker_6_link, 
+        ":speaker_7" => $speaker_7, 
+        ":speaker_7_link" => $speaker_7_link, 
+        ":speaker_8" => $speaker_8, 
+        ":speaker_8_link" => $speaker_8_link, 
+        ":speaker_9" => $speaker_9, 
+        ":speaker_9_link" => $speaker_9_link, 
+        ":speaker_10" => $speaker_10,
+        ":speaker_10_link" => $speaker_10_link,
+        ":e_location" => $eventLocation, 
+        ":descrip" => $desc
     ));
 
     echo "
@@ -444,7 +560,6 @@ function addEvent($name ,$year ,$desc, $link,$img){
     </script>";
     header("Refresh:3;url=event.php");
 }
-
 
 // select Collage Name
 function selectCollage(){

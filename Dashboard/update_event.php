@@ -21,7 +21,7 @@
                 $link = $_POST['link'];
         
              updateEvent($name ,$year ,$desc, $link,$img,$event_id);
-        
+         
             }
 ?>
 

@@ -9,7 +9,7 @@ if(isset($_SESSION['first_name'])){
     $events_data = getAllData("event");
     $i = 1;
 ?>
-<div class="content">
+<div class="content"> 
   <section class="content">
     <div class="container">
     <a class="btn btn-secondary pr-4 pl-4" href="dashboard.php">Back</a>
@@ -34,14 +34,22 @@ if(isset($_SESSION['first_name'])){
                         <div class="card mb-3" style="max-width: 540px;">
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                <img src="img/<?php echo $events_data_info['img']?>" alt="event image"style="width:100%;height:100%">
+                                <?php 
+                                  if($events_data_info['main_img'] == null){?>
+                                    <img src="img/events/default.jpg" alt="event image"style="width:100%;height:100%">
+                                <?php
+                                  } else {?>
+                                    <img src="img/events/<?php echo $events_data_info['main_img']?>" alt="event image"style="width:100%;height:100%">
+                                <?php
+                                  }
+                                ?>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title"><?php echo $events_data_info['ename']?></h5>
+                                        <h5 class="card-title"><?php echo $events_data_info['e_name']?></h5>
                                         <p class="card-text"><?php echo $events_data_info['descrip']?></p>
-                                        <p class="card-text"><small class="text-muted"><?php echo $events_data_info['eyear']?></small></p>
-                                        <a href="<?php echo $events_data_info['link']?>"class="m-2 btn btn-sm btn-light">More...</a>
+                                        <p class="card-text"><small class="text-muted"><?php echo $events_data_info['e_season']?></small></p>
+                                        <a href="event_view.php?id=<?php echo  $events_data_info['id'];?>"class="m-2 btn btn-sm btn-light">More...</a>
                                     </div>
                                 </div>
                             </div>
@@ -51,12 +59,12 @@ if(isset($_SESSION['first_name'])){
                       <a href="update_event.php?id=<?php echo  $events_data_info['id'];?>" class="edit_button btn btn-primary mr-3"> <i class="far fa-edit ml-1"></i></a>
                     </td>
                     <td class="py-5">
+                      <a href="event_view.php?id=<?php echo  $events_data_info['id'];?>" class="btn btn-warning delete_button"><i class="fas fa-eye"></i></a>
+                    </td>
+                    <td class="py-5">
                       <a href="delete.php?from=event&id=<?php echo  $events_data_info['id'];?>" class="btn btn-danger delete_button"><i class="far fa-trash-alt ml-1"></i></a>
                     </td>
                   </tr>
-                 
-                  
-                    
                   <?php 
                       $i++;
                     }
