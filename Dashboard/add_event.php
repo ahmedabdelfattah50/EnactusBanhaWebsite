@@ -7,7 +7,7 @@ $style = "add_member.css";
 $script = "";
 include "init.php";
 
-if(isset($_SESSION['first_name']))
+if(isset($_SESSION['first_name'])) 
 {
     if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['name'])){
         $name = $_POST['name']; 

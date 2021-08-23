@@ -150,71 +150,31 @@ if(isset($_SESSION['first_name']))
         </div>
         
         <div class="d-flex flex-wrap eventImgsTotal">
-       
-            <!-- <div class="form-group col-md-6"> -->
-                <?php 
-                    if($event_data['main_img'] == null){?>
-                    <img src="img/events/default.jpg" class="form-group col-md-6" alt="event image"style="width:100%;height:100%">
-                <?php
-                    } else {?>
-                    <img src="img/events/<?php echo $event_data['main_img']?>" class="form-group col-md-6" alt="event image"style="width:100%;height:100%">
-                <?php
-                    }
-                ?>
-            <!-- </div> -->
-            <!-- <div class="form-group col-md-6"> -->
-                <?php 
-                    if($event_data['img_1'] == null){?>
-                    <img src="img/events/default.jpg" class="form-group col-md-6" alt="event image"style="width:100%;height:100%">
-                <?php
-                    } else {?>
-                    <img src="img/events/<?php echo $event_data['img_1']?>" class="form-group col-md-6" alt="event image"style="width:100%;height:100%">
-                <?php
-                    }
-                ?>        
-            <!-- </div> -->
-            <!-- <div class="form-group col-md-6"> -->
-                <?php 
-                    if($event_data['img_2'] == null){?>
+            <?php 
+                if($event_data['main_img'] == null){?>
+                <img src="img/events/default.jpg" class="form-group col-md-6" alt="event image"style="width:100%;height:100%">
+            <?php
+                } else {?>
+                <img src="img/events/<?php echo $event_data['main_img']?>" class="form-group col-md-6" alt="event image"style="width:100%;height:100%">
+            <?php
+                }
+            ?>
+            <?php 
+            for($i=1; $i<=4; $i++){
+                if($event_data['img_' . $i] == null){?>
                     <img src="img/events/default.jpg" class="form-group col-md-6" alt="event image" style="width:100%;height:100%">
                 <?php
                     } else {?>
-                    <img src="img/events/<?php echo $event_data['img_2']?>" class="form-group col-md-6" alt="event image" style="width:100%;height:100%">
+                    <img src="img/events/<?php echo $event_data['img_' . $i]?>" class="form-group col-md-6" alt="event image" style="width:100%;height:100%">
                 <?php
                     }
-                ?>      
-            <!-- </div> -->
-            <!-- <div class="form-group col-md-6"> -->
-                <?php 
-                    if($event_data['img_3'] == null){?>
-                    <img src="img/events/default.jpg" class="form-group col-md-6" alt="event image" style="width:100%;height:100%">
-                <?php
-                    } else {?>
-                    <img src="img/events/<?php echo $event_data['img_3']?>" class="form-group col-md-6" alt="event image" style="width:100%;height:100%">
-                <?php
-                    }
-                ?>         
-            <!-- </div> -->
-            <!-- <div class="form-group col-md-6"> -->
-                <?php 
-                    if($event_data['img_4'] == null){?>
-                    <img src="img/events/default.jpg" class="form-group col-md-6" alt="event image" style="width:100%;height:100%">
-                <?php
-                    } else {?>
-                    <img src="img/events/<?php echo $event_data['img_4']?>" class="form-group col-md-6" alt="event image" style="width:100%;height:100%">
-                <?php
-                    }
-                ?>         
-            <!-- </div> -->
-
+            } ?>  
             <?php 
                 if($event_data['imgs_link'] == null){?>
                 <h2 class="form-group m-0 p-0 mb-3 col-md-6 alert alert-danger d-flex justify-content-center align-items-center">No images Link</h2>
             <?php
                 } else {?>
                     <a href="<?php echo $event_data['imgs_link']?>" class="form-group m-0 p-0 mb-3 col-md-6 alert alert-success d-flex justify-content-center align-items-center"> <h2>images Link</h2></a>
-
-                <!-- <img src="img/events/<php echo $event_data['imgs_link']?>" class="form-group col-md-6" alt="event image" style="width:100%;height:100%"> -->
             <?php
                 }
             ?> 
@@ -230,7 +190,10 @@ if(isset($_SESSION['first_name']))
                 </div>  
                 <div class="form-group col-md-6">
                     <label>Link of Speaker <?php echo $i?></label>
-                    <input style="direction: ltr;" value="<?php echo $event_data['speaker_' . $i . '_link'] ?>" type="url" class="form-control" readonly>
+                    
+                    <br>
+                    <a style="font-size:20px;" href="<?php echo $event_data['speaker_' . $i . '_link'] ?>" target="_blank">Link <i class="fas fa-link"></i></a>
+                    <!-- <input style="direction: ltr;" value="<php echo $event_data['speaker_' . $i . '_link'] ?>" type="url" class="form-control" readonly> -->
                 </div>      
             <?php
                 }
