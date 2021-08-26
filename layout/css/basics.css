@@ -1,0 +1,335 @@
+:root {
+    --mainColor: #ffc107;
+    --mainColor2: gold;
+    --lightColor: #fff;
+    --lightColor2: #e8e8e8;
+    --darkColor: #101010;
+    --darkColor2: rgba(15, 15, 15, 0.6);
+    --grayColor: #666;
+    --grayColor2: rgb(156, 153, 153);
+    --grayColor3: rgb(109, 107, 107);
+    --grayColor4: #9c9b9b;
+    --grayColor5: rgb(112, 111, 111);
+    --grayColor6: #707070;
+    --grayColor7: rgb(75, 73, 73);
+    --facebookColor: #4267B2;
+    --twitterColor: #1DA1F2;
+    --instgramColor: #c75a98c4;
+    --whatsappColor: #25D366;
+}
+
+body{
+    background: var(--darkColor);
+}
+/* ============== Start Navbar =============== */
+.navbar {
+    background: var(--darkColor);
+    padding: 5px 0;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar .navbar-brand {
+    padding: 0;
+}
+
+.navbar .navbar-brand img {
+    width: 135px;
+    height: 60px;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar .navbar-nav {
+    padding: 0;
+    /* background: red; */
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+    color: var(--lightColor);
+    /* font-weight: 600; */
+    font-size: 18px;
+    padding: 0px 15px;
+    text-transform: uppercase;
+}
+
+.navbar .navbar-nav .nav-item.dropdown {
+    cursor: context-menu;
+}
+
+/* .navbar .navbar-nav .nav-item.dropdown:hover .dropdown-menu{
+    display: block;
+} */
+
+/* .navbar .navbar-nav .dropdown .dropdown-toggle::after {
+    display: none;
+} */
+
+/* .navbar .navbar-nav .dropdown .dropdown-menu {
+    padding: 34px 0 10px;
+    text-align: center;
+    border: none;
+    border-radius: 0; 
+} */
+
+.navbar .navbar-nav .dropdown .dropdown-menu {
+    border-radius: 0;
+    padding: 0;
+    background-color: var(--mainColor);
+    border: 0;
+    /* box-shadow: 0 0 50px rgb(163, 159, 159); */
+}
+
+.navbar .navbar-nav .dropdown .dropdown-menu .dropdown-item {
+    color: var(--darkColor);
+    font-size: 18px;
+    padding: 5px 25px;
+}
+
+.navbar .navbar-nav .dropdown .dropdown-menu .dropdown-item:hover {
+    color: var(--darkColor) !important;
+    background: var(--lightColor) !important;
+}
+
+.navbar .navbar-nav .nav-item .nav-link.active,
+.navbar .navbar-nav .nav-item .nav-link:hover,
+.navbar .navbar-nav:last-child .nav-item .nav-link:hover {
+    color: var(--mainColor) !important;
+}
+
+/* .navbar .langLink .nav-item .nav-link {
+    color: #16acaa !important;
+    margin: 0 15px;
+} */
+
+
+
+
+
+
+
+
+/* .NavbarMobile .navMenuMobile {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    background-color: var(--lightColor);
+    transition: 0.3s;
+}
+
+.NavbarMobile .navMenuMobile .menuAllSections .nav-item {
+    color: var(--grayColor6);
+    padding: 0px;
+}
+
+.NavbarMobile .navMenuMobile .menuAllSections .nav-item .dropdown-menu::after {
+    display: none;
+}
+
+.NavbarMobile .navMenuMobile .menuAllSections .nav-item .dropdown-menu .dropdown-item {
+    padding: 5px 0;
+}
+
+.NavbarMobile .navMenuMobile .closebtn {
+    content: '';
+    position: absolute;
+    background: var(--lightColor);
+    color: var(--lightColor);
+    font-size: 40px;
+    height: 40px;
+    width: 40px;
+    display: none;
+    right: 100%;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.NavbarMobile .navMenuMobile a {
+    padding: 8px 20px;
+    text-decoration: none;
+    font-size: 17px;
+    transition: 0.3s;
+    display: none;
+} */
+/* ============== End Navbar =============== */
+/* ============== Start go_up icon =============== */
+.go_up {
+    position: fixed;
+    right: 40px;
+    top: 90%;
+    padding: 15px 10px;
+    background: var(--mainColor);
+    border: 2px solid var(--lightColor);
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--darkColor);
+    color: var(--darkColor);
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    z-index: 55 !important;
+}
+/* ============== End go_up icon =============== */ 
+/* ============== Start footer =============== */
+footer {
+    padding: 25px 0 14px;
+    background: var(--darkColor);
+}
+
+footer .footerSections {
+    padding-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+footer .footerSections .footerSocialMedia img {
+    height: 74px;
+    width: 145px;
+}
+
+footer .footerSections .footerSocialMedia p {
+    color: var(--lightColor);
+    font-size: 18px;
+    margin: 0;
+    margin-top: 10px;
+}
+
+footer .footerSections .footerSocialMedia .listOfIcons {
+    padding: 0;
+    padding-top: 40px;
+}
+
+footer .footerSections .footerSocialMedia .listOfIcons a {
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+footer .footerSections .footerSocialMedia .listOfIcons a:hover {
+    transform: scale(1.2, 1.2);
+}
+
+footer .footerSections .footerSocialMedia .listOfIcons a .fa-facebook-f {
+    color: var(--facebookColor);
+}
+
+footer .footerSections .footerSocialMedia .listOfIcons a .fa-instagram {
+    color: var(--instgramColor);
+}
+
+footer .footerSections .footerSocialMedia .listOfIcons a .fa-twitter {
+    color: var(--twitterColor);
+}
+
+footer .footerSections .footerContact h2 { 
+    color: var(--lightColor);
+}
+
+footer .footerSections .footerContact a { 
+    color: var(--lightColor);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 5px 0;
+}
+
+footer .footerCopyRights {
+    border-top: 1px solid var(--grayColor5);
+    padding-top: 20px;
+}
+
+footer .footerCopyRights h3 {
+    color: var(--lightColor);
+    font-size: 20px;
+}
+
+footer .footerCopyRights h3 span,
+footer .footerCopyRights h3 span a{
+    color: var(--mainColor);
+    text-decoration: none;
+}
+/* ============== End footer =============== */
+
+/* ################ Large devices (desktops, less than 1200px) ################ */
+@media (max-width: 1199.98px) {
+    /* ============== Start go_up icon =============== */
+    .go_up {
+        top: 90%; 
+    }
+    /* ============== End go_up icon =============== */ 
+}
+
+/* ################ Medium devices (tablets, less than 992px) ################ */
+@media (max-width: 991.98px) {
+    /* ============== Start Navbar =============== */
+    .navbar .navbar-toggler {
+        background: var(--mainColor);
+    }
+
+    nav .navbar-collapse {
+        padding: 20px 0 10px;
+    }
+    /* ============== End Navbar =============== */
+    /* ============== Start go_up =============== */
+    .go_up {
+        top: 92%;
+        font-size: 17px;
+        padding: 13px 10px;
+    }
+    /* ============== End go_up =============== */  
+    /* ============== Start footer =============== */
+    footer .footerSections .footerSocialMedia {
+        margin-bottom: 25px;
+    }
+
+    footer .footerSections .footerContact h2 { 
+        font-size: 25px;
+    }
+
+    footer .footerSections .footerContact a { 
+        font-size: 17px;
+    }
+
+    footer .footerCopyRights h3 {
+        font-size: 18px;
+    }
+    /* ============== End footer =============== */ 
+}
+
+/* ################ Small devices (landscape phones, less than 768px) ################ */
+@media (max-width: 767.98px) {
+
+}
+
+/* ################ Extra small devices (portrait phones, less than 576px) ################ */
+@media (max-width: 575.98px) {
+    /* ============== Start Navbar =============== */
+    .navbar {
+        /* padding: 10px; */
+        padding: 5px 10px;
+    }
+    /* ============== End Navbar =============== */
+    /* ============== Start go_up =============== */
+    .go_up {
+        right: 20px;
+        top: 90%;
+        padding: 10px;
+    }
+    /* ============== End go_up =============== */ 
+    /* ============== Start footer =============== */
+    footer .footerSections .footerContact {
+        margin-bottom: 25px;
+    }
+
+    footer .footerSections .footerContact:last-child {
+        margin-bottom: 0;
+    }
+
+    footer .footerSections .footerContact a { 
+        font-size: 16px;
+    }
+
+    footer .footerCopyRights h3 {
+        font-size: 16px;
+    }
+    /* ============== End footer =============== */
+}

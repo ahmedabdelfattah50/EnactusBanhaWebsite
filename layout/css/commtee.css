@@ -1,0 +1,419 @@
+:root {
+    --mainColor: #ffc107;
+    --mainColor2: gold;
+    --lightColor: #fff;
+    --lightColor2: #e8e8e8;
+    --darkColor: #101010;
+    --darkColor2: rgba(15, 15, 15, 0.6);
+    --grayColor: #666;
+    --grayColor2: rgb(156, 153, 153);
+    --grayColor3: rgb(109, 107, 107);
+    --grayColor4: #9c9b9b;
+    --grayColor5: rgb(112, 111, 111);
+    --grayColor6: #707070;
+    --grayColor7: rgb(75, 73, 73);
+    --facebookColor: #4267B2;
+    --twitterColor: #1DA1F2;
+    --instgramColor: #c75a98c4;
+    --whatsappColor: #25D366;
+}
+/* ============== Start pageHeader =============== */
+.pageHeader {
+    margin-top: 70px;
+    padding: 120px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-image: url('../../images/backgrounds/testimonial.jpg');
+    position: relative;
+    z-index: 0;
+}
+
+.pageHeader::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--mainColor);
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+    z-index: -1 !important;
+}
+
+.pageHeader .pageHeaderHeader {
+    z-index: 100;
+}
+
+.pageHeaderHeader {
+    padding-bottom: 20px;
+}
+
+.pageHeader .pageHeaderHeader h3,
+.pageHeader .pageHeaderHeader h3 a {
+    color: var(--lightColor);
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.pageHeader .pageHeaderHeader h2 {
+    color: var(--lightColor);
+    font-size: 40px;
+    text-transform: uppercase;
+}
+/* ============== End pageHeader =============== */
+/* ============== Start commteeDescription =============== */
+.commteeDescription {
+    padding: 50px 0;
+    background: var(--darkColor);
+    border-bottom: 2px solid var(--mainColor);
+}
+
+.commteeDescription .commteeHeader {
+    font-size: 40px;
+    color: var(--mainColor);
+    text-transform: uppercase;
+}
+
+.commteeDescription .commteeData .commteeInfo {
+    margin-bottom: 10px;
+}
+
+.commteeDescription .commteeData .commteeInfo h2,
+.commteeDescription .commteeData .commteeLeaders h2 {
+    color: var(--mainColor);
+    font-size: 25px;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+}
+
+.commteeDescription .commteeData .commteeInfo p {
+    color: var(--lightColor);
+    font-size: 25px;
+    line-height: 30px;
+    margin: 0;
+    text-transform: capitalize;
+    font-weight: normal;
+}
+
+.commteeDescription .commteeData .commteeLeaders a {
+    color: var(--lightColor);
+    font-size: 25px;
+    text-transform: capitalize;
+    font-weight: normal;
+}
+/* ============== End commteeDescription =============== */
+/* ============== Start commteeMembers =============== */
+.commteeMembers {
+    padding: 50px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-image: url('../../images/backgrounds/curves.jpg');
+    position: relative;
+    z-index: 0;
+}
+
+.commteeMembers::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--mainColor);
+    opacity: 0.4;
+    height: 100%;
+    width: 100%;
+    z-index: -1 !important;
+}
+
+.commteeMembers .commteeMembersHeader {
+    z-index: 100;
+}
+
+.commteeMembersHeader {
+    padding-bottom: 20px;
+}
+
+.commteeMembers .commteeMembersHeader h2 {
+    color: var(--lightColor);
+    font-size: 40px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.commteeMembers .box-menu ul {
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.commteeMembers .box-menu ul li {
+    list-style: none;
+    color: var(--lightColor);
+    background: var(--darkColor);
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.commteeMembers .box-menu ul li.mixitup-control-active {
+    color: var(--lightColor);
+    box-shadow: 0 0 20px var(--darkColor);
+}
+
+.commteeMembers .box-menu ul li:hover {
+    color: var(--lightColor);
+    box-shadow: 0 0 20px var(--darkColor);
+}
+
+.commteeMembers a {
+    text-decoration: none;
+}
+
+.commteeMembers .box-list .box-item {
+    padding: 0 10px;
+}
+
+.commteeMembers .memberSec {
+    z-index: 1;
+    background: var(--lightColor2);
+    padding: 15px;
+    box-shadow: 0 0 20px var(--grayColor4);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.commteeMembers .memberSec.headCommtee::before {
+    position: absolute;
+    content: '';
+    top: -40px;
+    left: -30px;
+    transform: rotate(-40deg);
+    color: var(--mainColor2);
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f521";
+    font-size: 45px;
+}
+
+.commteeMembers .memberSec:hover .memberSocialMedia {
+    display: flex;
+}
+
+.commteeMembers .memberSec img {
+    height: 350px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.commteeMembers .memberSec .memberData {
+    padding: 5px 0 0;
+}
+
+.commteeMembers .memberSec .memberData h2 {
+    font-size: 25px;
+    margin-bottom: 5px;
+    color: var(--darkColor);
+    text-decoration: none;
+}
+
+.commteeMembers .memberSec .memberData a {
+    text-decoration: none;
+}
+
+.commteeMembers .memberSec .memberData h3 {
+    font-size: 18px;
+    color: var(--grayColor);
+    margin: 0;
+}
+
+.commteeMembers .memberSec .memberSocialMedia {
+    display: none;
+    position: absolute;
+    top: 15px;
+    background: var(--mainColor);
+    padding: 5px 10px;
+    border-top-left-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.commteeMembers .memberSec .memberSocialMedia a {
+    color: var(--lightColor);
+    font-size: 18px;
+    transition: 0.3s ease-in-out;
+    padding: 5px 0;
+}
+
+.commteeMembers .memberSec .memberSocialMedia a:hover {
+    transform: scale(1.2, 1.2);
+}
+/* ============== End commteeMembers =============== */
+
+/* ################ Large devices (desktops, less than 1200px) ################ */
+@media (max-width: 1199.98px) {
+}
+
+/* ################ Medium devices (tablets, less than 992px) ################ */
+@media (max-width: 991.98px) {
+    /* ============== Start pageHeader =============== */
+    .pageHeader {
+        padding: 100px 0;
+    }
+
+    .pageHeader .pageHeaderHeader h3 {
+        font-size: 18px;
+    }
+
+    .pageHeader .pageHeaderHeader h2 {
+        font-size: 35px;
+    }
+    /* ============== End pageHeader =============== */
+    /* ============== Start commteeDescription =============== */
+    .commteeDescription .commteeHeader {
+        font-size: 35px;
+    }
+
+    .commteeDescription .commteeData .commteeInfo p {
+        line-height: 35px;
+    }
+    /* ============== End commteeDescription =============== */
+    /* ============== Start commteeMembers =============== */
+    .commteeMembers .commteeMembersHeader h2 {
+        font-size: 35px;
+    }
+
+    .commteeMembers .box-list .box-item {
+        padding: 0 7px;
+    }
+    
+    .commteeMembers .memberSec {
+        margin-bottom: 14px;
+    }
+    /* ============== End commteeMembers =============== */
+}
+
+/* ################ Small devices (landscape phones, less than 768px) ################ */
+@media (max-width: 767.98px) {
+    /* ============== Start pageHeader =============== */
+    .pageHeader .pageHeaderHeader {
+        padding-bottom: 10px;
+    }
+
+    .pageHeader .pageHeaderHeader h3 {
+        font-size: 17px;
+    }
+
+    .pageHeader .pageHeaderHeader h2 {
+        font-size: 30px;
+    }
+    /* ============== End pageHeader =============== */
+    /* ============== Start commteeDescription =============== */
+    .commteeDescription {
+        padding: 40px 0;
+    }
+
+    .commteeDescription .commteeHeader {
+        font-size: 30px;
+    }
+
+    .commteeDescription .commteeData .commteeInfo h2,
+    .commteeDescription .commteeData .commteeLeaders h2 {
+        font-size: 23px;
+    }
+
+    .commteeDescription .commteeData .commteeInfo p {
+        font-size: 23px;
+    }
+
+    .commteeDescription .commteeData .commteeLeaders a {
+        font-size: 23px;
+    }
+    /* ============== End commteeDescription =============== */
+    /* ============== Start commteeMembers =============== */
+    .commteeMembers {
+        padding: 40px 0;
+    }
+
+    .commteeMembers .commteeMembersHeader h2 {
+        font-size: 30px;
+    }
+    /* ============== End commteeMembers =============== */
+}
+
+/* ################ Extra small devices (portrait phones, less than 576px) ################ */
+@media (max-width: 575.98px) {
+    /* ============== Start pageHeader =============== */
+    .pageHeader {
+        padding: 80px 0;
+    }
+
+    .pageHeader .pageHeaderHeader {
+        padding-bottom: 5px;
+    }
+
+    .pageHeader .pageHeaderHeader h3 {
+        font-size: 15px;
+    }
+
+    .pageHeader .pageHeaderHeader h2 {
+        font-size: 25px;
+    }
+    /* ============== End pageHeader =============== */
+    /* ============== Start commteeDescription =============== */
+    .commteeDescription {
+        padding: 35px 0;
+    }
+
+    .commteeDescription .commteeHeader {
+        font-size: 25px;
+    }
+
+    .commteeDescription .commteeData .commteeInfo h2,
+    .commteeDescription .commteeData .commteeLeaders h2 {
+        font-size: 20px;
+    }
+
+    .commteeDescription .commteeData .commteeInfo p {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .commteeDescription .commteeData .commteeLeaders a {
+        font-size: 20px;
+    }
+    /* ============== End commteeDescription =============== */
+    /* ============== Start commteeMembers =============== */
+    .commteeMembers {
+        padding: 35px 0;
+    }
+
+    .commteeMembers .commteeMembersHeader h2 {
+        font-size: 25px;
+    }
+
+    .commteeMembers .box-list .box-item {
+        padding: 0;
+    }
+
+    .commteeMembers .memberSec {
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+
+    .commteeMembers .memberSec::before {
+        top: -30px !important;
+        left: -12px !important;
+        font-size: 40px !important;
+        transform: rotate(-30deg) !important;
+    }
+
+    .commteeMembers .memberSec img {
+        height: 100%;
+    }
+    /* ============== End commteeMembers =============== */
+}

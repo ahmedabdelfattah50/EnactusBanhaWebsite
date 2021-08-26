@@ -1,0 +1,1090 @@
+:root {
+    --mainColor: #ffc107;
+    --mainColor2: gold;
+    --lightColor: #fff;
+    --lightColor2: #e8e8e8;
+    --darkColor: #101010;
+    --darkColor2: rgba(15, 15, 15, 0.6);
+    --grayColor: #666;
+    --grayColor2: rgb(156, 153, 153);
+    --grayColor3: rgb(109, 107, 107);
+    --grayColor4: #9c9b9b;
+    --grayColor5: rgb(112, 111, 111);
+    --grayColor6: #707070;
+    --grayColor7: rgb(75, 73, 73);
+    --facebookColor: #4267B2;
+    --twitterColor: #1DA1F2;
+    --instgramColor: #c75a98c4;
+    --whatsappColor: #25D366;
+}
+/* ============== Start Main =============== */
+main {
+    height: 650px;
+    z-index: 0;
+    margin-top: 70px;
+}
+
+main .carousel {
+    padding: 0;
+    position: relative;
+}
+
+main .carousel::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    background: var(--darkColor2);
+    height: 100%;
+    width: 100%;
+}
+
+main .carousel .carousel-item {
+    height: 650px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+main .carousel .carousel-item .carousel-content {
+    height: 650px;
+}
+
+main .carousel .carousel-item .carousel-content .sliderContent {
+    z-index: 1;
+}
+
+main .carousel .carousel-item .carousel-content .sliderContent h2 {
+    color: var(--lightColor);
+    font-size: 60px;
+}
+
+main .carousel .carousel-item .carousel-content .sliderContent h3 {
+    color: var(--lightColor);
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+main .carousel .carousel-item .carousel-content .sliderContent a {
+    background: var(--mainColor);
+    padding: 10px 30px;
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+    color: var(--lightColor);
+    text-decoration: none;
+    font-size: 18px;
+}
+
+main .carousel .carousel-item .carousel-content .sliderContent a:hover {
+    box-shadow: 0 0 20px var(--grayColor2);
+    padding: 10px 60px;
+}
+
+main .carousel img {
+    width: 100%;
+    height: 100%;
+}
+/* ============== End Main =============== */
+/* ============== Start enactusSeasonTimer =============== */
+.enactusSeasonTimer {
+    padding: 50px 0;
+    background: var(--darkColor);
+}
+
+.enactusSeasonTimer .enactusBrief h3 {
+    color: var(--mainColor);
+    font-size: 20px;
+}
+
+.enactusSeasonTimer .enactusBrief h2 {
+    color: var(--lightColor);
+    font-size: 40px;
+}
+
+.enactusSeasonTimer .enactusBrief p {
+    color: var(--lightColor);
+    font-size: 18px;
+}
+
+.enactusSeasonTimer .aboutEnactus .enactusBigLogo img {
+    width: 485px;
+}
+
+.enactusSeasonTimer .seasonTimer {
+    padding-top: 40px;
+}
+
+.enactusSeasonTimer .seasonTimer h3 {
+    color: var(--mainColor);
+    font-size: 20px;
+}
+
+.enactusSeasonTimer .seasonTimer h2 {
+    color: var(--lightColor);
+    font-size: 25px;
+}
+
+.enactusSeasonTimer .seasonTimer .seasonTimerSections .seasonTimerSec {
+    height: 120px;
+    width: 120px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px var(--grayColor3);
+    border: 1px solid var(--lightColor);
+}
+
+.enactusSeasonTimer .seasonTimer .seasonTimerSections .seasonTimerSec h2 {
+    font-size: 40px;
+}
+
+.enactusSeasonTimer .seasonTimer .seasonTimerSections .seasonTimerSec h3 {
+    font-size: 18px;
+}
+/* ============== End enactusSeasonTimer =============== */
+/* ============== Start ourHeads =============== */
+.ourHeads {
+    padding: 50px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-image: url('../../images/backgrounds/curves.jpg');
+    position: relative;
+    z-index: 0;
+}
+
+.ourHeads::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--mainColor);
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+    z-index: -1 !important;
+}
+
+.ourHeads .ourHeadsHeader {
+    z-index: 100;
+}
+
+.ourHeadsHeader {
+    padding-bottom: 20px;
+}
+
+.ourHeads .ourHeadsHeader h3 {
+    color: var(--lightColor);
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.ourHeads .ourHeadsHeader h2 {
+    color: var(--lightColor);
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.ourHeads .allHeads {
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.ourHeads .allHeads a {
+    text-decoration: none;
+}
+
+.ourHeads .allHeads .headSec {
+    z-index: 1;
+    background: var(--lightColor2);
+    padding: 15px;
+    box-shadow: 0 0 20px var(--grayColor4);
+    border-radius: 10px;
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.ourHeads .allHeads .headSec:hover .headSocialMedia{
+    display: flex;
+}
+
+.ourHeads .allHeads .headSec img {
+    height: 350px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.ourHeads .allHeads .headSec .headData {
+    padding: 5px 0 0;
+}
+
+.ourHeads .allHeads .headSec .headData h2 {
+    font-size: 25px;
+    margin-bottom: 5px;
+    color: var(--darkColor);
+    text-decoration: none;
+}
+
+.ourHeads .allHeads .headSec .headData a {
+    text-decoration: none;
+}
+
+.ourHeads .allHeads .headSec .headData h3 {
+    font-size: 18px;
+    color: var(--grayColor);
+    margin: 0;
+}
+
+.ourHeads .allHeads .headSec .headSocialMedia {
+    display: none;
+    position: absolute;
+    top: 15px;
+    background: var(--mainColor);
+    padding: 5px 10px;
+    border-top-left-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.ourHeads .allHeads .headSec .headSocialMedia a {
+    color: var(--lightColor);
+    font-size: 18px;
+    transition: 0.3s ease-in-out;
+    padding: 5px 0;
+}
+
+.ourHeads .allHeads .headSec .headSocialMedia a:hover {
+    transform: scale(1.2, 1.2);
+}
+
+.ourHeads .viewMoreBtn {
+    background: var(--darkColor);
+    padding: 10px 30px;
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+    color: var(--lightColor);
+    text-decoration: none;
+    font-size: 18px;
+    margin-top: 40px; 
+}
+
+.ourHeads .viewMoreBtn:hover {
+    box-shadow: 0 0 20px var(--grayColor);
+    padding: 10px 60px;
+}
+/* ============== End ourHeads =============== */
+/* ============== Start partnersSponsers =============== */
+.partnersSponsers {
+    padding: 50px 0;
+    background: var(--darkColor);
+}
+
+.partnersSponsers h3 {
+    color: var(--mainColor);
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.partnersSponsers h2 {
+    color: var(--lightColor);
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.partnersSponsers .partnersSponsersLogos {
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+
+.partnersSponsers .partnersSponsersLogos .logoSec {
+    padding: 20px;
+}
+
+.partnersSponsers .partnersSponsersLogos img {
+    height: 150px;
+    width: 150px;
+    transition: 0.3s ease-in-out;
+}
+
+.partnersSponsers .partnersSponsersLogos .logoSec:hover img {
+    transform: scale(1.2, 1.2);
+}
+/* ============== End partnersSponsers =============== */
+/* ============== Start testimonial =============== */
+.testimonial {
+    padding: 50px 0;
+    background-image: url('../../images/backgrounds/testimonial.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; 
+    background-attachment: fixed;
+    position: relative;
+    z-index: 0;
+}
+
+.testimonial::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--mainColor);
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+    z-index: -1 !important;
+}
+
+.testimonial .testimonialSay {
+    z-index: 100;
+}
+
+.testimonialSay {
+    padding-bottom: 20px;
+}
+
+.testimonial .testimonialSay h3 {
+    color: var(--lightColor);
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.testimonial .testimonialSay h2 {
+    color: var(--lightColor);
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.testimonial .testmonial-slider {  
+    z-index: 1;
+}
+
+.testimonial .testmonial-slider .testmonial-item {
+    padding: 0 80px;
+    cursor: pointer;
+}
+
+.testimonial .testmonial-slider .testmonial-item p {
+    font-size: 20px;
+    margin: 0;
+    color: var(--grayColor7);
+}
+
+.testimonial .testmonial-slider .testmonial-data {
+    padding-top: 20px;
+}
+
+.testimonial .testmonial-slider .testmonial-data img {
+    height: 90px;
+    width: 90px;
+}
+
+.testimonial .testmonial-slider .testmonial-data h2 {
+    padding-top: 10px;
+}
+
+.testimonial .testmonial-slider .testmonial-data h3 {
+    margin: 0;
+    font-size: 20px;
+    color: var(--grayColor7);
+}
+
+.testimonial .testmonial-slider .slick-prev:before {
+    font-size: 25px;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f053";
+}
+
+.testimonial .testmonial-slider .slick-next:before {
+    font-size: 25px;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f054";
+}
+/* ============== End testimonial =============== */
+/* ============== Start ourProjects =============== */
+.ourProjects {
+    padding: 50px 0;
+    background: var(--darkColor);
+}
+
+.ourProjects h3 {
+    color: var(--lightColor);
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.ourProjects h2 {
+    color: var(--lightColor);
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.ourProjects .enactusProjectsLinks {
+    padding-top: 20px;
+}
+
+.ourProjects .enactusProjectsLinks a {
+    color: var(--lightColor);
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 10px 40px;
+    border-radius: 20px;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.ourProjects .enactusProjectsLinks a:hover {
+    box-shadow: 0 0 20px var(--lightColor);
+}
+/* ============== End ourProjects =============== */
+/* ============== Start ourBlog =============== */
+.ourBlog {
+    padding: 50px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-image: url('../../images/backgrounds/backCamera.jpg');
+    position: relative;
+    z-index: 0;
+}
+
+.ourBlog::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--mainColor);
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+    z-index: -1 !important;
+}
+
+.ourBlog .ourBlogHeader {
+    z-index: 100;
+}
+
+.ourBlogHeader {
+    padding-bottom: 20px;
+}
+
+.ourBlog .ourBlogHeader h3 {
+    color: var(--lightColor);
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.ourBlog .ourBlogHeader h2 {
+    color: var(--lightColor);
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.ourBlog .allBlogs {
+    flex-wrap: wrap;
+}
+
+.ourBlog .allBlogs a {
+    text-decoration: none;
+}
+
+.ourBlog .allBlogs .bigSecBlog {
+    padding: 0 10px;
+    margin: 10px 0;
+}
+
+.ourBlog .allBlogs .blogSec {
+    z-index: 1;
+    background: var(--lightColor2);
+    padding: 15px;
+    box-shadow: 0 0 20px var(--grayColor4);
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.ourBlog .allBlogs .blogSec img {
+    height: 350px;
+    width: 320px;
+    border-radius: 10px;
+}
+
+.ourBlog .allBlogs .blogSec .blogData {
+    padding: 10px 0;
+}
+
+.ourBlog .allBlogs .blogSec .blogData h2 {
+    font-size: 25px;
+    margin-bottom: 5px;
+    color: var(--darkColor);
+    text-decoration: none;
+}
+
+.ourBlog .allBlogs .blogSec .blogData a {
+    text-decoration: none;
+}
+
+.ourBlog .allBlogs .blogSec .blogData p {
+    font-size: 18px;
+    color: var(--grayColor);
+    margin: 0;
+}
+
+.ourBlog .viewMoreBtn {
+    background: var(--darkColor);
+    padding: 10px 30px;
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+    color: var(--lightColor);
+    text-decoration: none;
+    font-size: 18px;
+    margin-top: 40px; 
+}
+
+.ourBlog .viewMoreBtn:hover {
+    box-shadow: 0 0 20px var(--grayColor);
+    padding: 10px 60px;
+}
+/* ============== End ourBlog =============== */
+
+/* ################ Large devices (desktops, less than 1200px) ################ */
+@media (max-width: 1199.98px) {
+    /* ============== Start enactusSeasonTimer =============== */
+    .enactusSeasonTimer .aboutEnactus .enactusBigLogo img {
+        width: 390px;
+    }
+
+    .enactusSeasonTimer .seasonTimer .seasonTimerSections .seasonTimerSec {
+        height: 110px;
+        width: 110px;
+    }
+    /* ============== End enactusSeasonTimer =============== */
+    /* ============== Start testimonial =============== */
+    .testimonial .testmonial-slider .slick-prev,
+    .testimonial .testmonial-slider .slick-next {
+        margin: 0 10px;
+    }
+    /* ============== End testimonial =============== */
+    /* ============== Start ourBlog =============== */
+    .ourBlog .allBlogs .blogSec img {
+        width: 340px;
+    }
+    /* ============== End ourBlog =============== */
+}
+
+/* ################ Medium devices (tablets, less than 992px) ################ */
+@media (max-width: 991.98px) {
+    /* ============== Start Main =============== */
+    main,
+    main .carousel .carousel-item,
+    main .carousel .carousel-item .carousel-content {
+        height: 500px;
+    }
+
+    main .carousel .carousel-item .carousel-content .sliderContent h2 {
+        font-size: 50px;
+    }
+
+    main .carousel .carousel-item .carousel-content .sliderContent h3 {
+        font-size: 20px;
+    }
+
+    main .carousel .carousel-item .carousel-content .sliderContent a:hover {
+        padding: 10px 50px;
+    }
+    /* ============== End Main =============== */
+    /* ============== Start enactusSeasonTimer =============== */
+    .enactusSeasonTimer .enactusBrief h3 {
+        font-size: 18px;
+    }
+
+    .enactusSeasonTimer .enactusBrief h2 {
+        font-size: 35px;
+    }
+
+    .enactusSeasonTimer .aboutEnactus,
+    .enactusSeasonTimer .seasonTimer {
+        flex-flow: column;
+    }
+
+    .enactusSeasonTimer .seasonTimer .seasonHeader {
+        margin-bottom: 20px;
+    }
+
+    .enactusSeasonTimer .seasonTimer h3 {
+        font-size: 18px;
+    }
+
+    .enactusSeasonTimer .seasonTimer h2 {
+        font-size: 23px;
+    }
+    /* ============== End enactusSeasonTimer =============== */
+    /* ============== Start ourHeads =============== */
+    .ourHeads .ourHeadsHeader h3 {
+        font-size: 18px;
+    }
+
+    .ourHeads .ourHeadsHeader h2 {
+        font-size: 35px;
+    }
+
+    .ourHeads .allHeads .headSec img {
+        width: 295px;
+    }
+    /* ============== End ourHeads =============== */
+    /* ============== Start partnersSponsers =============== */
+    .partnersSponsers h3 {
+        font-size: 18px;
+    }
+
+    .partnersSponsers h2 {
+        font-size: 35px;
+    }
+
+    .partnersSponsers .partnersSponsersLogos img {
+        height: 130px;
+        width: 130px;
+    }
+    /* ============== End partnersSponsers =============== */
+    /* ============== Start testimonial =============== */
+    .testimonialSay {
+        padding-bottom: 15px;
+    } 
+
+    .testimonial .testimonialSay h3 {
+        font-size: 18px;
+    }
+
+    .testimonial .testimonialSay h2 {
+        font-size: 35px;
+    }
+
+    .testimonial .testmonial-slider .testmonial-item p {
+        font-size: 18px;
+    }
+
+    .testimonial .testmonial-slider .testmonial-data h2 {
+        font-size: 27px;
+    }
+
+    .testimonial .testmonial-slider .testmonial-data h3 {
+        font-size: 18px;
+    }
+    /* ============== End testimonial =============== */
+    /* ============== Start ourProjects =============== */
+    .ourProjects h3 {
+        font-size: 18px;
+    }
+
+    .ourProjects h2 {
+        font-size: 35px;
+    }
+
+    .ourProjects .enactusProjectsLinks a {
+        font-size: 18px;
+        padding: 10px 30px;
+    }
+    /* ============== End ourProjects =============== */
+    /* ============== Start ourBlog =============== */
+    .ourBlog .ourBlogHeader h3 {
+        font-size: 18px;
+    }
+
+    .ourBlog .ourBlogHeader h2 {
+        font-size: 35px;
+    }
+
+    .ourBlog .allBlogs .blogSec img {
+        width: 300px;
+    }
+    /* ============== End ourBlog =============== */
+}
+
+/* ################ Small devices (landscape phones, less than 768px) ################ */
+@media (max-width: 767.98px) {
+    /* ============== Start Main =============== */
+    main .carousel .carousel-item .carousel-content .sliderContent h2 {
+        font-size: 40px;
+    }
+
+    main .carousel .carousel-item .carousel-content .sliderContent h3 {
+        font-size: 18px;
+    }
+
+    main .carousel .carousel-item .carousel-content .sliderContent a:hover {
+        padding: 10px 45px;
+    }
+    /* ============== End Main =============== */
+    /* ============== Start enactusSeasonTimer =============== */
+    .enactusSeasonTimer {
+        padding: 40px 0;
+    }
+
+    .enactusSeasonTimer .enactusBrief h3 {
+        font-size: 17px;
+    }
+
+    .enactusSeasonTimer .enactusBrief h2 {
+        font-size: 30px;
+    }
+
+    .enactusSeasonTimer .aboutEnactus .enactusBigLogo img {
+        width: 320px;
+    }
+
+    .enactusSeasonTimer .seasonTimer .seasonTimerSections .seasonTimerSec {
+        height: 90px;
+        width: 90px;
+    }
+
+    .enactusSeasonTimer .seasonTimer .seasonTimerSections .seasonTimerSec h2 {
+        font-size: 35px;
+        margin: 0;
+    }
+
+    .enactusSeasonTimer .seasonTimer .seasonTimerSections .seasonTimerSec h3 {
+        font-size: 18px;
+    }
+
+    .enactusSeasonTimer .seasonTimer h3 {
+        font-size: 17px;
+    }
+
+    .enactusSeasonTimer .seasonTimer h2 {
+        font-size: 20px;
+    }
+    /* ============== End enactusSeasonTimer =============== */
+    /* ============== Start ourHeads =============== */
+    .ourHeads {
+        padding: 40px 0;
+    }
+
+    .ourHeads .ourHeadsHeader {
+        padding-bottom: 10px;
+    }
+
+    .ourHeads .ourHeadsHeader h3 {
+        font-size: 17px;
+    }
+
+    .ourHeads .ourHeadsHeader h2 {
+        font-size: 30px;
+    }
+
+    .ourHeads .allHeads .headSec img {
+        width: 290px;
+    }
+    /* ============== End ourHeads =============== */
+    /* ============== Start partnersSponsers =============== */
+    .partnersSponsers {
+        padding: 40px 0;
+    }
+
+    .partnersSponsers h3 {
+        font-size: 17px;
+    }
+
+    .partnersSponsers h2 {
+        font-size: 30px;
+    }
+
+    .partnersSponsers .partnersSponsersLogos img {
+        height: 110px;
+        width: 110px;
+    }
+    /* ============== End partnersSponsers =============== */
+    /* ============== Start testimonial =============== */
+    .testimonial {
+        padding: 40px 0;
+    }
+
+    .testimonialSay {
+        padding-bottom: 10px;
+    } 
+
+    .testimonial .testimonialSay h3 {
+        font-size: 17px;
+    }
+
+    .testimonial .testimonialSay h2 {
+        font-size: 30px;
+    }
+
+    .testimonial .testmonial-item {
+        padding: 0 60px !important;
+    }
+
+    .testimonial .testmonial-slider .testmonial-data h2 {
+        font-size: 25px;
+    }
+
+    .testimonial .testmonial-slider .testmonial-data h3 {
+        font-size: 17px;
+    }
+    /* ============== End testimonial =============== */
+    /* ============== Start ourProjects =============== */
+    .ourProjects {
+        padding: 40px 0;
+    }
+
+    .ourProjects h3 {
+        font-size: 17px;
+    }
+
+    .ourProjects h2 {
+        font-size: 30px;
+    }
+    /* ============== End ourProjects =============== */
+    /* ============== Start ourBlog =============== */
+    .ourBlog {
+        padding: 40px 0;
+    }
+
+    .ourBlog .ourBlogHeader {
+        padding-bottom: 10px;
+    }
+
+    .ourBlog .ourBlogHeader h3 {
+        font-size: 17px;
+    }
+
+    .ourBlog .ourBlogHeader h2 {
+        font-size: 30px;
+    }
+
+    .ourBlog .allBlogs .blogSec img {
+        width: 290px;
+    }
+    /* ============== End ourBlog =============== */
+}
+
+/* ################ Extra small devices (portrait phones, less than 576px) ################ */
+@media (max-width: 575.98px) {
+    /* ============== Start Main =============== */
+    main .carousel .carousel-item .carousel-content .sliderContent h2 {
+        font-size: 35px;
+    }
+
+    main .carousel .carousel-item .carousel-content .sliderContent h3 {
+        font-size: 15px;
+    }
+
+    main .carousel .carousel-item .carousel-content .sliderContent a {
+        font-size: 16px;
+    }
+
+    main .carousel .carousel-item .carousel-content .sliderContent a:hover {
+        padding: 10px 40px;
+    }
+
+    main .carousel-control-next-icon,
+    main .carousel-control-prev-icon {
+        height: 15px;
+        width: 15px;
+    }
+    /* ============== End Main =============== */
+    /* ============== Start enactusSeasonTimer =============== */
+    .enactusSeasonTimer {
+        padding: 35px 0;
+    }
+
+    .enactusSeasonTimer .enactusBrief h3 {
+        font-size: 15px;
+    }
+
+    .enactusSeasonTimer .enactusBrief h2 {
+        font-size: 28px;
+    }
+
+    .enactusSeasonTimer .enactusBrief p {
+        font-size: 17px;
+    }
+
+    .enactusSeasonTimer .aboutEnactus .enactusBigLogo img {
+        width: 300px;
+    }
+
+    .enactusSeasonTimer .seasonTimer .seasonTimerSections {
+        flex-wrap: wrap;
+    }
+
+    .enactusSeasonTimer .seasonTimer .seasonTimerSections .seasonTimerSec {
+        height: 90px;
+        width: 90px;
+        margin: 5px;
+    }
+
+    .enactusSeasonTimer .seasonTimer .seasonTimerSections .seasonTimerSec h2 {
+        font-size: 28px;
+    }
+
+    .enactusSeasonTimer .seasonTimer .seasonTimerSections .seasonTimerSec h3 {
+        font-size: 18px;
+    }
+
+    .enactusSeasonTimer .seasonTimer h3 {
+        font-size: 17px;
+    }
+
+    .enactusSeasonTimer .seasonTimer h2 {
+        font-size: 20px;
+    }
+    /* ============== End enactusSeasonTimer =============== */
+    /* ============== Start ourHeads =============== */
+    .ourHeads {
+        padding: 35px 0;
+    }
+
+    .ourHeads .ourHeadsHeader {
+        padding-bottom: 5px;
+    }
+
+    .ourHeads .ourHeadsHeader h3 {
+        font-size: 15px;
+    }
+
+    .ourHeads .ourHeadsHeader h2 {
+        font-size: 25px;
+    }
+
+    .ourHeads .allHeads {
+        margin-bottom: 20px;
+    }
+
+    .ourHeads .allHeads .headSec {
+        padding: 12px;
+        margin: 5px 0;
+    }
+
+    .ourHeads .allHeads .headSec img {
+        width: 270px;
+    }
+
+    .ourHeads .allHeads .headSec .headData h2 {
+        font-size: 23px;
+    }
+
+    .ourHeads .allHeads .headSec .headData h3 {
+        font-size: 15px;
+    }
+
+    .ourHeads .viewMoreBtn {
+        font-size: 16px;
+    }
+    /* ============== End ourHeads =============== */
+    /* ============== Start partnersSponsers =============== */
+    .partnersSponsers {
+        padding: 35px 0;
+    }
+
+    .partnersSponsers h3 {
+        font-size: 15px;
+    }
+
+    .partnersSponsers h2 {
+        font-size: 25px;
+    }
+
+    .partnersSponsers .partnersSponsersLogos img {
+        height: 100px;
+        width: 100px;
+    }
+    /* ============== End partnersSponsers =============== */
+    /* ============== Start testimonial =============== */
+    .testimonial {
+        padding: 35px 0;
+    }
+
+    .testimonialSay {
+        padding-bottom: 5px;
+    } 
+
+    .testimonial .testimonialSay h3 {
+        font-size: 15px;
+    }
+
+    .testimonial .testimonialSay h2 {
+        font-size: 25px;
+    }
+
+    .testimonial .testmonial-item {
+        padding: 0 30px !important;
+    }
+
+    .testimonial .testmonial-item p {
+        font-size: 17px !important;
+    }
+
+    .testimonial .testmonial-slider .testmonial-data h2 {
+        font-size: 20px;
+        margin-bottom: 3px;
+    }
+
+    .testimonial .testmonial-slider .testmonial-data h3 {
+        font-size: 16px;
+    }
+
+    .testimonial .testmonial-slider .slick-next:before,
+    .testimonial .testmonial-slider .slick-prev:before {
+        font-size: 17px;
+    }
+    /* ============== End testimonial =============== */
+    /* ============== Start ourProjects =============== */
+    .ourProjects {
+        padding: 35px 0;
+    }
+
+    .ourProjects h3 {
+        font-size: 15px;
+    }
+
+    .ourProjects h2 {
+        font-size: 25px;
+    }
+
+    .enactusProjectsLinks {
+        flex-flow: column;
+        align-items: center !important;
+    }
+
+    .enactusProjectsLinks a {
+        margin: 5px 0 !important; 
+        width: 70%;
+    }
+    /* ============== End ourProjects =============== */
+    /* ============== Start ourBlog =============== */
+    .ourBlog {
+        padding: 35px 0;
+    }
+
+    .ourBlog .ourBlogHeader {
+        padding-bottom: 5px;
+    }
+
+    .ourBlog .ourBlogHeader h3 {
+        font-size: 15px;
+    }
+
+    .ourBlog .ourBlogHeader h2 {
+        font-size: 25px;
+    }
+
+    .ourBlog .allBlogs .bigSecBlog {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 5px 0;
+    }
+
+    .ourBlog .allBlogs .blogSec {
+        width: 320px;
+        margin: 0 !important;
+    }
+
+    .ourBlog .allBlogs .blogSec img {
+        width: 100%;
+    }
+    /* ============== End ourBlog =============== */
+}
