@@ -4,7 +4,7 @@
     $page_name = "Profile";
     $style = "profile.css";
     $script = "profile.js";
-    $boot="true";
+    $boot="true"; 
     require_once "init.php";
     $formType = $_GET['from'];
     if(isset($_SESSION['first_name'])){

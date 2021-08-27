@@ -9,125 +9,6 @@ include "init.php";
 
 if(isset($_SESSION['first_name']))
 {
-    // if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['name'])){
-    //     $name = $_POST['name']; 
-    //     $year = $_POST['year'];
-    //     if(isset($_FILES['mainImg'])){
-    //         if(!empty($_FILES['mainImg'])){
-    //             $mainImg = "";
-    //         } else {
-    //             $mainImg = "eventMainImg_" . $_FILES['mainImg']['name'];
-    //         }
-    //         move_uploaded_file($_FILES['mainImg']['tmp_name'],"img/events/$mainImg");
-    //     }
-    //     if(isset($_FILES['img_1']))
-    //     {
-    //         if(!empty($_FILES['img_1'])){
-    //             $img_1 = "";
-    //         } else {
-    //             $img_1 = "eventImg1_" . $_FILES['img_1']['name'];
-    //         }
-    //         move_uploaded_file($_FILES['img_1']['tmp_name'],"img/events/$img_1");
-    //     }
-    //     if(isset($_FILES['img_2']))
-    //     {
-    //         if(!empty($_FILES['img_2'])){
-    //             $img_2 = "";
-    //         } else {
-    //             $img_2 = "eventImg2_" . $_FILES['img_2']['name'];
-    //         }
-    //         move_uploaded_file($_FILES['img_2']['tmp_name'],"img/events/$img_2");
-    //     }
-    //     if(isset($_FILES['img_3']))
-    //     {
-    //         if(!empty($_FILES['img_3'])){
-    //             $img_3 = "";
-    //         } else {
-    //             $img_3 = "eventImg3_" . $_FILES['img_3']['name'];
-    //         }
-    //         move_uploaded_file($_FILES['img_3']['tmp_name'],"img/events/$img_3");
-    //     }
-    //     if(isset($_FILES['img_4']))
-    //     {
-    //         if(!empty($_FILES['img_4'])){
-    //             $img_4 = "";
-    //         } else {
-    //             $img_4 = "eventImg4_" . $_FILES['img_4']['name'];
-    //         }
-    //         move_uploaded_file($_FILES['img_4']['tmp_name'],"img/events/$img_4");
-    //     }
-    //     $driveLink = $_POST['driveLink'];
-
-    //     $speaker_1 = $_POST['speaker_1'];
-    //     $speaker_1_link = $_POST['speaker_1_link'];
-
-    //     $speaker_2 = $_POST['speaker_2'];
-    //     $speaker_2_link = $_POST['speaker_2_link'];
-
-    //     $speaker_3 = $_POST['speaker_3'];
-    //     $speaker_3_link = $_POST['speaker_3_link'];
-
-    //     $speaker_4 = $_POST['speaker_4'];
-    //     $speaker_4_link = $_POST['speaker_4_link'];
-
-    //     $speaker_5 = $_POST['speaker_5'];
-    //     $speaker_5_link = $_POST['speaker_5_link'];
-
-    //     $speaker_6 = $_POST['speaker_6'];
-    //     $speaker_6_link = $_POST['speaker_6_link'];
-
-    //     $speaker_7 = $_POST['speaker_7'];
-    //     $speaker_7_link = $_POST['speaker_7_link'];
-
-    //     $speaker_8 = $_POST['speaker_8'];
-    //     $speaker_8_link = $_POST['speaker_8_link'];
-
-    //     $speaker_9 = $_POST['speaker_9'];
-    //     $speaker_9_link = $_POST['speaker_9_link'];
-
-    //     $speaker_10 = $_POST['speaker_10'];
-    //     $speaker_10_link = $_POST['speaker_10_link'];
-
-    //     $eventLocation = $_POST['eventLocation'];
-    //     $desc = $_POST['desc'];
-
-
-    //     addEvent(
-    //         $name,
-    //         $year,
-    //         $mainImg, 
-    //         $img_1, 
-    //         $img_2, 
-    //         $img_3, 
-    //         $img_4, 
-    //         $driveLink, 
-    //         $speaker_1, 
-    //         $speaker_1_link, 
-    //         $speaker_2, 
-    //         $speaker_2_link, 
-    //         $speaker_3, 
-    //         $speaker_3_link, 
-    //         $speaker_4, 
-    //         $speaker_4_link, 
-    //         $speaker_5, 
-    //         $speaker_5_link, 
-    //         $speaker_6, 
-    //         $speaker_6_link, 
-    //         $speaker_7, 
-    //         $speaker_7_link, 
-    //         $speaker_8, 
-    //         $speaker_8_link, 
-    //         $speaker_9, 
-    //         $speaker_9_link,
-    //         $speaker_10, 
-    //         $speaker_10_link,  
-    //         $eventLocation, 
-    //         $desc);
-    // }
-    // $seasonNames = selectSeason();
-    // $events_data = getAllData("event");
-
-
     $event_data = getData_with_id("event",$_GET['id']);
   ?> 
 
@@ -139,7 +20,6 @@ if(isset($_SESSION['first_name']))
 <p class="text-center mb-5 pb-3">From This Page You Can Add New Event</p>
 <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data">
   <div class="form-row">
-
         <div class="form-group col-md-6">
             <label>Event Name</label>
             <input style="direction: ltr;" type="text" class="form-control" value="<?php echo $event_data['e_name']?>" readonly>
@@ -174,7 +54,7 @@ if(isset($_SESSION['first_name']))
                 <h2 class="form-group m-0 p-0 mb-3 col-md-6 alert alert-danger d-flex justify-content-center align-items-center">No images Link</h2>
             <?php
                 } else {?>
-                    <a href="<?php echo $event_data['imgs_link']?>" class="form-group m-0 p-0 mb-3 col-md-6 alert alert-success d-flex justify-content-center align-items-center"> <h2>images Link</h2></a>
+                    <a href="<?php echo $event_data['imgs_link']?>" class="form-group m-0 p-0 mb-3 col-md-6 alert alert-success d-flex justify-content-center align-items-center" target="_blank"> <h2>images Link</h2></a>
             <?php
                 }
             ?> 

@@ -193,16 +193,16 @@
           <a href="event.php" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
           <i class="fa fa-users fa-2x icon"></i>
         </div><!-- ./dashItem -->
-        <div class="dashItem color4  rounded">
-          <h3 class="itemNum">150</h3>
-          <h4 class="itemName">Opinion</h4>
-          <a href="get_opinion.php" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
-          <i class="fa fa-users fa-2x icon"></i>
-        </div><!-- ./dashItem -->
         <div class="dashItem color2  rounded">
           <h3 class="itemNum">150</h3>
           <h4 class="itemName">Commities</h4>
           <a href="commities.php" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
+          <i class="fa fa-users fa-2x icon"></i>
+        </div><!-- ./dashItem -->
+        <div class="dashItem color4  rounded">
+          <h3 class="itemNum">150</h3>
+          <h4 class="itemName">Opinion</h4>
+          <a href="get_opinion.php" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
           <i class="fa fa-users fa-2x icon"></i>
         </div><!-- ./dashItem -->
       </div><!-- ./dashItem -->

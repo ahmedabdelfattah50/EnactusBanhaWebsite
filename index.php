@@ -35,7 +35,7 @@
                                     <a href="#">View More <i class="fas fa-angle-right"></i></a>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                     <div class="carousel-item" style="background-image: url(images/backgrounds/event_3.jpg);">
                         <div class="container">

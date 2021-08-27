@@ -6,68 +6,56 @@
   $script = "members.js";
   include "init.php";
     if(isset($_SESSION['first_name'])){
-
         if (isset($_GET['id']) && is_numeric($_GET['id'])){
             $event_id = $_GET['id'];
-            $result= getData_with_id("event",$event_id);
+            $result = getData_with_id("event",$event_id);
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["name"])){
-
-                // if(isset($_FILES['img'])){
-                //     $img = $_FILES['img']['name'];
-                //     move_uploaded_file($_FILES['img']['tmp_name'],"img/$img");
-                // }
-                // $name = $_POST['name']; 
-                // $desc = $_POST['desc'];
-                // $year = $_POST['year'];
-                // $link = $_POST['link'];
-        
-
 
                 $name = $_POST['name']; 
                 $year = $_POST['year'];
                 if(isset($_FILES['mainImg'])){
-                    if(!empty($_FILES['mainImg'])){
-                        $mainImg = "";
+                    if(empty($_FILES['mainImg']['name'])){
+                        $mainImg = $result['main_img'];
                     } else {
                         $mainImg = "eventMainImg_" . $_FILES['mainImg']['name'];
+                        move_uploaded_file($_FILES['mainImg']['tmp_name'],"img/events/$mainImg");
                     }
-                    move_uploaded_file($_FILES['mainImg']['tmp_name'],"img/events/$mainImg");
                 }
                 if(isset($_FILES['img_1']))
                 {
-                    if(!empty($_FILES['img_1'])){
-                        $img_1 = "";
+                    if(empty($_FILES['img_1']['name'])){
+                        $img_1 = $result['img_1'];
                     } else {
                         $img_1 = "eventImg1_" . $_FILES['img_1']['name'];
+                        move_uploaded_file($_FILES['img_1']['tmp_name'],"img/events/$img_1");
                     }
-                    move_uploaded_file($_FILES['img_1']['tmp_name'],"img/events/$img_1");
                 }
                 if(isset($_FILES['img_2']))
                 {
-                    if(!empty($_FILES['img_2'])){
-                        $img_2 = "";
+                    if(empty($_FILES['img_2']['name'])){
+                        $img_2 = $result['img_2'];
                     } else {
                         $img_2 = "eventImg2_" . $_FILES['img_2']['name'];
+                        move_uploaded_file($_FILES['img_2']['tmp_name'],"img/events/$img_2");
                     }
-                    move_uploaded_file($_FILES['img_2']['tmp_name'],"img/events/$img_2");
                 }
                 if(isset($_FILES['img_3']))
                 {
-                    if(!empty($_FILES['img_3'])){
-                        $img_3 = "";
+                    if(empty($_FILES['img_3']['name'])){
+                        $img_3 = $result['img_3'];
                     } else {
                         $img_3 = "eventImg3_" . $_FILES['img_3']['name'];
+                        move_uploaded_file($_FILES['img_3']['tmp_name'],"img/events/$img_3");
                     }
-                    move_uploaded_file($_FILES['img_3']['tmp_name'],"img/events/$img_3");
                 }
                 if(isset($_FILES['img_4']))
                 {
-                    if(!empty($_FILES['img_4'])){
-                        $img_4 = "";
+                    if(empty($_FILES['img_4']['name'])){
+                        $img_4 = $result['img_4'];
                     } else {
                         $img_4 = "eventImg4_" . $_FILES['img_4']['name'];
+                        move_uploaded_file($_FILES['img_4']['tmp_name'],"img/events/$img_4");
                     }
-                    move_uploaded_file($_FILES['img_4']['tmp_name'],"img/events/$img_4");
                 }
                 $driveLink = $_POST['driveLink'];
 
@@ -104,11 +92,41 @@
                 $eventLocation = $_POST['eventLocation'];
                 $desc = $_POST['desc'];
 
-                updateEvent($name ,$year ,$desc, $link,$img,$event_id);
-            }
+                updateEvent(
+                    $name,
+                    $year,
+                    $mainImg, 
+                    $img_1, 
+                    $img_2, 
+                    $img_3, 
+                    $img_4, 
+                    $driveLink, 
+                    $speaker_1, 
+                    $speaker_1_link, 
+                    $speaker_2, 
+                    $speaker_2_link, 
+                    $speaker_3, 
+                    $speaker_3_link, 
+                    $speaker_4, 
+                    $speaker_4_link, 
+                    $speaker_5, 
+                    $speaker_5_link, 
+                    $speaker_6, 
+                    $speaker_6_link, 
+                    $speaker_7, 
+                    $speaker_7_link, 
+                    $speaker_8, 
+                    $speaker_8_link, 
+                    $speaker_9, 
+                    $speaker_9_link,
+                    $speaker_10, 
+                    $speaker_10_link,  
+                    $eventLocation,  
+                    $desc,
+                    $event_id );
+            } 
 
     $seasonNames = selectSeason();
-    // $event_data = getData_with_id("event",$_GET['id']);
 ?>
 
 <div class="container mb-3">
@@ -122,12 +140,10 @@
   <div class="form-group col-md-6">
             <label>Event Name</label>
             <input style="direction: ltr;" type="text" name='name' class="form-control" value="<?php echo $result['e_name']?>">
-
-            <!-- <input style="direction: ltr;" name="name" type="text"value="<php echo $result['ename'];?>" class="form-control"> -->
         </div>
         <div class="form-group col-md-6"> 
             <label for="year">Season</label>
-            <select class="custom-select ui search dropdown"  name="year" id="year" required>
+            <select class="custom-select ui search dropdown"  name="year" id="year">
                 <option selected disabled value="">Choose...</option>
                 <?php foreach($seasonNames as $seasonName){
                     if($seasonName['year'] == $result['e_season']){?>
@@ -191,21 +207,15 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>Link of Speaker <?php echo $i?></label>
-                    <input style="direction: ltr;" name="speaker_<?php echo $i?>_link" value='<?php echo $result['speaker_' . $i . "_link"];?>' type="url" class="form-control">
+                    <input style="direction: ltr;" name="speaker_<?php echo $i?>_link" value='<?php echo $result['speaker_' . $i . "_link"];?>' type="text" class="form-control">
                 </div>
         <?php
             }
         ?>
-
-
         <div class="form-group col-md-12">
             <label>Event Location</label>
             <input style="direction: ltr;" name="eventLocation" value='<?php echo $result['e_location'];?>' type="text" class="form-control">
         </div>
-        <!-- <div class="form-group col-md-6">
-            <label> link</label>
-            <input style="direction: ltr;"value="<php echo $result['link'];?>" name="link" type="url" class="form-control">
-        </div> -->
         <div class="form-group col-md-12">
             <label> Description</label>
             <textarea name="desc" class="form-control" placeholder="Some Info About Event *" rows="4" autocomplete="off"><?php echo $result['descrip'];?></textarea>

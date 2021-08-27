@@ -41,6 +41,35 @@ function insert_member ($f_name , $l_name , $email , $phone , $birthday ,$commit
 
 /*
 ==========================  
+  insert new committee By/ Amr Mohamed
+==========================
+*/
+ 
+function insert_committee ($name, $abbreviation, $describtion){
+    global $con;
+    $stmt = $con->prepare("INSERT INTO commity(name,abbreviation,describtion) Value(:name,:abbreviation,:describtion)");
+    $stmt->execute(
+    array(
+        ":name"       => $name,
+        ":abbreviation"        => $abbreviation,
+        ":describtion"            => $describtion
+    ));
+    echo "
+    <script>
+        toastr.success('Great , Committee has been successfully added .')
+    </script>";
+    header("Refresh:3;url=commities.php");
+}
+
+/*
+==========================  
+  update new Committe By/ Amr Mohamed
+==========================
+*/
+
+
+/*
+==========================  
   update new member By/ Amr Mohamed
 ==========================
 */
@@ -72,7 +101,7 @@ function  update_member ($member_id,$f_name , $l_name , $email , $phone , $birth
     ));
     echo "
     <script>
-        toastr.success('Great , Member INFO has Been Successfully Update  .')
+        toastr.success('Update , Member INFO has Been Successfully Update.')
     </script>";
     header("Refresh:3;url=members.php");
 }
@@ -347,7 +376,9 @@ function insert_opinion ($name , $email ,$commity ,$season,$opinion){
 function count_comittee_members($colume,$databname,$commity){
     global $con;
     $stmt = $con->prepare("SELECT COUNT($colume) From $databname WHERE commity = ?");
+    // $stmt2 = $con->prepare("SELECT COUNT($colume) From hosters WHERE commity_name = ?");
     $stmt->execute(array($commity));
+    // $stmt2->execute(array($commity));
     $rows = $stmt->fetchColumn();
     return $rows;
 }
@@ -362,8 +393,26 @@ function count_comittee_members($colume,$databname,$commity){
 function getData_with_committee($table,$commity){
     global $con;
     $stmt = $con->prepare("SELECT * FROM $table WHERE commity = ?");
+    // $stmt2 = $con->prepare("SELECT * FROM hosters WHERE commity_name = ?");
     $stmt->execute(array($commity));
-    $rows = $stmt->fetchAll();
+    // $stmt2->execute(array($commity));
+    // $rows2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // $rows = $rows2;
+    // $rows
+
+    /*foreach($rows1 as $rows1_data){
+        // echo "<pre>";
+        // print_r($rows1_data);
+        array_push($rows2,$rows1_data);
+        // echo "</pre>";
+    }*/
+
+    // $rows = $rows2;
+    // $rows = array();
+
+    // array_push($rows,$rows2,$rows1);
     return $rows;
 }
 
@@ -398,7 +447,7 @@ function  update_about_us ($name , $content,$about_id){
 */
 
 
-function  updateEvent($name ,
+function updateEvent( $name ,
                       $year ,
                       $mainImg, 
                       $img_1, 
@@ -468,11 +517,11 @@ function  updateEvent($name ,
         $name ,
         $year ,
         $mainImg, 
+        $driveLink, 
         $img_1, 
         $img_2, 
         $img_3, 
         $img_4, 
-        $driveLink, 
         $speaker_1, 
         $speaker_1_link, 
         $speaker_2, 
@@ -499,11 +548,34 @@ function  updateEvent($name ,
     ));
     echo "
     <script>
-        toastr.success('Great , Event INFO has Been Successfully Update  .')
+        toastr.success('Update , Event INFO has Been Successfully Updated.')
     </script>";
     header("Refresh:3;url=event.php");
 }
 
+
+/*
+==========================  
+  update updateCommitte
+==========================
+*/
+
+function updateCommitte($name, $abbreviation, $describtion,$committeId){
+    global $con;
+    $stmt = $con->prepare("UPDATE commity SET name = ?,abbreviation = ?,describtion = ? WHERE id = ?");
+    $stmt->execute(
+    array(
+        $name,
+        $abbreviation,
+        $describtion,
+        $committeId
+    ));
+    echo "
+    <script>
+        toastr.success('Update , Committe INFO has Been Successfully Update.')
+    </script>";
+    header("Refresh:1;url=commities.php");
+}
 
 
 /*
