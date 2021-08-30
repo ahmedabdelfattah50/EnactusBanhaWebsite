@@ -6,4 +6,4 @@
     <script src="<?php echo $jsPath?>semantic.min.js"></script>
     <script src="<?php echo $jsPath?><?php echo $script ?>"></script>
   </body>
-</html> 
+</html>  

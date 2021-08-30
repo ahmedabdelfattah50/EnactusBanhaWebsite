@@ -199,6 +199,12 @@
           <a href="commities.php" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
           <i class="fa fa-users fa-2x icon"></i>
         </div><!-- ./dashItem -->
+        <div class="dashItem color1  rounded">
+          <h3 class="itemNum">150</h3>
+          <h4 class="itemName">Season</h4>
+          <a href="season.php" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
+          <i class="fa fa-users fa-2x icon"></i>
+        </div><!-- ./dashItem -->
         <div class="dashItem color4  rounded">
           <h3 class="itemNum">150</h3>
           <h4 class="itemName">Opinion</h4>
@@ -207,5 +213,5 @@
         </div><!-- ./dashItem -->
       </div><!-- ./dashItem -->
 
-      </div><!-- ./row -->
-    </section>
+      </div><!-- ./row --> 
+    </section> 

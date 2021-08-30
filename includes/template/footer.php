@@ -48,14 +48,5 @@
     </footer>
     <?php } ?>
     <!-- ============== End footer =============== -->
-    <!-- ============== JavaScripts =============== -->
-    <script src="<?php echo $jsPath?>jquery_3.6.0.min.js"></script>
-    <script src="<?php echo $jsPath?>propper.js"></script>
-    <script src="<?php echo $jsPath?>bootstrap_ltr_4.5.3.bundle.min.js"></script>
-    <script src="<?php echo $jsPath?>slick.min.js"></script>
-    <script src="<?php echo $jsPath?>fancyBox.min.js"></script>
-    <script src="<?php echo $jsPath?>mixitup.min.js"></script>
-    <script src="<?php echo $jsPath?>basics.js"></script>
-    <script src="<?php echo $jsPath?>main.js"></script>
 </body>
 </html>

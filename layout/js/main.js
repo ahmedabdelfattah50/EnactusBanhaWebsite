@@ -8,7 +8,7 @@ $(document).ready(function(){
         autoplay:true,
         adaptiveHeight:true,
         autoplaySpeed:4000,
-    });
+    }); 
 
     // fancybox for images
     $("a#single_image").fancybox();

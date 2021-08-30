@@ -12,37 +12,36 @@
         <img style="display: block;margin: auto;margin-top:0px;margin-bottom:20px" class="add_admin" src="img/icons8-unread-messages-48.png" alt="add_admin">
         <h3 class="text-center mt-2 mb-3">Welcome To Website Dashboard .</h3>
         <p class="text-center">From This Page You Can Show All Messages</p>
-
         <?php $allData = getAllData("contact");?>
-<div class="row mt-5">
-        <?php foreach ($allData as $all_messages){ ?>
-<div class="col-md-6">
-            <div class="ui cards mb-3 text-center">
-                <div class="card">
-                    <div class="content">
-                    <img style="margin: 20px 0;width:30%" src="img/check.gif" alt="sender">
-                    <div class="header pb-3">
-                        <?php echo $all_messages["name"];?>
-                    </div>
-                    <div class="meta">
-                    <?php echo $all_messages["email"];?>
-                    </div>
-                    <div class="description pb-3">
-                    <?php echo $all_messages["messsage"];?>
-                    </div>
-                    <div class="meta">
-                    <?php echo $all_messages["time"];?>
-                    </div>
-                    </div>
-                    <div class="extra content">
-                    <div class="ui two buttons">
-                       <a class="ui basic red button" style="text-decoration: none !important;color:#db2828!important" href="delete.php?id=<?php echo $all_messages["id"]?>&from=messages"> Delete </a>
-                    </div>
-                    </div>
-                    </div>
-                </div>
-        </div>
-        <?php } ?>
+        <div class="row mt-5">
+            <?php foreach ($allData as $all_messages){ ?>
+            <div class="col-md-6">
+                <div class="ui cards mb-3 text-center">
+                    <div class="card">
+                        <div class="content">
+                            <img style="margin: 20px 0;width:30%" src="img/check.gif" alt="sender">
+                            <div class="header pb-3">
+                                <?php echo $all_messages["name"];?>
+                            </div>
+                            <div class="meta">
+                                <?php echo $all_messages["email"];?>
+                            </div>
+                            <div class="description pb-3">
+                                <?php echo $all_messages["messsage"];?>
+                            </div>
+                            <div class="meta">
+                                <?php echo $all_messages["time"];?>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <div class="ui two buttons">
+                            <a class="ui basic red button" style="text-decoration: none !important;color:#db2828!important" href="delete.php?id=<?php echo $all_messages["id"]?>&from=messages"> Delete </a>
+                            </div>
+                        </div>
+                    </div>  
+                </div>      
+            </div>
+            <?php } ?>
         </div>
 
             <?php if (count_users("id","contact") == 0){?>

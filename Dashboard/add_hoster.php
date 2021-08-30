@@ -80,7 +80,6 @@ $positionNames = selectPosition();
 <p class="text-center mb-5 pb-3">From This Page You Can Add New Hoster to Dashboard</p>
 <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data">
   <div class="form-row">
-
         <div class="form-group col-md-6">
             <label>First Name</label>
             <input style="direction: ltr;" name="first_name" type="text" class="form-control">

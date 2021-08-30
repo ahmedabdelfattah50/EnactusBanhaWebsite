@@ -61,12 +61,46 @@ function insert_committee ($name, $abbreviation, $describtion){
     header("Refresh:3;url=commities.php");
 }
 
+
 /*
 ==========================  
-  update new Committe By/ Amr Mohamed
+  insert new Season
 ==========================
 */
 
+function addSeason($year, $active_season){
+    global $con;
+    $stmt = $con->prepare("INSERT INTO season(year, active_season) Value(:year, :active_season)");
+    $stmt->execute(
+    array(
+        ":year"       => $year,
+        ":active_season"        => $active_season
+    ));
+    echo "
+    <script>
+        toastr.success('Great , Season has been successfully added .')
+    </script>";
+    header("Refresh:3;url=season.php");
+}
+
+/*
+==========================  
+  update Season
+==========================
+*/
+
+function updateSeason($year, $active_season, $seasonId){
+    global $con;
+    $stmt = $con->prepare("UPDATE season SET year = ?,active_season = ? WHERE id =?");
+    $stmt->execute(
+        array($year, $active_season, $seasonId)
+    );
+    echo "
+    <script>
+        toastr.success('Update , Season INFO has Been Successfully Update.')
+    </script>";
+    header("Refresh:3;url=season.php");
+}
 
 /*
 ==========================  
@@ -338,7 +372,7 @@ function count_old_highBoard(){
 
 /*
 ==========================  
-    insert new Hoster By/ Amr Mohamed
+    insert new Opinion
 ==========================
 */
 
@@ -364,6 +398,29 @@ function insert_opinion ($name , $email ,$commity ,$season,$opinion){
         toastr.success('Thanks for Your Time , Your Opinion Has Been Send Successfully .')
     </script>";
     header("Refresh:3;url=opinion_form.php");
+}
+
+/*
+==========================  
+    insert new Message
+==========================
+*/
+
+function insertMessage ($firstName, $lastName, $email ,$subject ,$message){  
+    global $con;
+    $stmt = $con->prepare("INSERT INTO contact(name,email,subject,message) Value(:name,:email,:subject,:message)");
+    $stmt->execute(
+    array(
+        ":name"             => $firstName . " " . $lastName,
+        ":email"            => $email,
+        ":subject"          => $subject,
+        ":message"           => $message
+    ));
+    echo "
+    <script>
+        toastr.success('Thanks for Your Time , Your Message Has been Send Successfully.')
+    </script>";
+    // header("Refresh:3;url=contactUs.php");
 }
 
 
@@ -447,105 +504,14 @@ function  update_about_us ($name , $content,$about_id){
 */
 
 
-function updateEvent( $name ,
-                      $year ,
-                      $mainImg, 
-                      $img_1, 
-                      $img_2, 
-                      $img_3, 
-                      $img_4, 
-                      $driveLink, 
-                      $speaker_1, 
-                      $speaker_1_link, 
-                      $speaker_2, 
-                      $speaker_2_link, 
-                      $speaker_3, 
-                      $speaker_3_link, 
-                      $speaker_4, 
-                      $speaker_4_link, 
-                      $speaker_5,
-                      $speaker_5_link, 
-                      $speaker_6, 
-                      $speaker_6_link, 
-                      $speaker_7, 
-                      $speaker_7_link, 
-                      $speaker_8, 
-                      $speaker_8_link, 
-                      $speaker_9, 
-                      $speaker_9_link,
-                      $speaker_10, 
-                      $speaker_10_link,  
-                      $eventLocation, 
-                      $desc, 
-                      $event_id
-    ){
+function updateEvent( $name, $year, $mainImg, $img_1, $img_2, $img_3, $img_4, $driveLink, $speaker_1, $speaker_1_link, $speaker_2, $speaker_2_link, $speaker_3, $speaker_3_link, $speaker_4, $speaker_4_link, $speaker_5, $speaker_5_link, $speaker_6, $speaker_6_link, $speaker_7, $speaker_7_link, $speaker_8, $speaker_8_link, $speaker_9, $speaker_9_link, $speaker_10, $speaker_10_link, $eventLocation, $desc, $event_id){
     global $con;
-    $stmt = $con->prepare("UPDATE event SET 
-        e_name = ?,
-        e_season = ?,
-        main_img = ?,
-        imgs_link = ?,
-        img_1 = ?,
-        img_2 = ?,
-        img_3 = ?,
-        img_4 = ?,
-        speaker_1 = ?,
-        speaker_1_link = ?,
-        speaker_2 = ?,
-        speaker_2_link = ?,
-        speaker_3 = ?,
-        speaker_3_link = ?,
-        speaker_4 = ?,
-        speaker_4_link = ?,
-        speaker_5 = ?,
-        speaker_5_link = ?, 
-        speaker_6 = ?,
-        speaker_6_link = ?, 
-        speaker_7 = ?,
-        speaker_7_link = ?, 
-        speaker_8 = ?,
-        speaker_8_link = ?, 
-        speaker_9 = ?,
-        speaker_9_link = ?, 
-        speaker_10 = ?,
-        speaker_10_link = ?, 
-        e_location = ?,
+    $stmt = $con->prepare("UPDATE event SET e_name = ?, e_season = ?, main_img = ?, imgs_link = ?, img_1 = ?, img_2 = ?, img_3 = ?, img_4 = ?, speaker_1 = ?, speaker_1_link = ?, speaker_2 = ?, speaker_2_link = ?, speaker_3 = ?, speaker_3_link = ?, speaker_4 = ?, speaker_4_link = ?, speaker_5 = ?, speaker_5_link = ?, speaker_6 = ?, speaker_6_link = ?, speaker_7 = ?, speaker_7_link = ?, speaker_8 = ?, speaker_8_link = ?, speaker_9 = ?, speaker_9_link = ?, speaker_10 = ?, speaker_10_link = ?, e_location = ?,
         descrip = ? 
     WHERE id =?");
     $stmt->execute(
     array(
-        $name ,
-        $year ,
-        $mainImg, 
-        $driveLink, 
-        $img_1, 
-        $img_2, 
-        $img_3, 
-        $img_4, 
-        $speaker_1, 
-        $speaker_1_link, 
-        $speaker_2, 
-        $speaker_2_link, 
-        $speaker_3, 
-        $speaker_3_link, 
-        $speaker_4, 
-        $speaker_4_link, 
-        $speaker_5,
-        $speaker_5_link, 
-        $speaker_6, 
-        $speaker_6_link, 
-        $speaker_7, 
-        $speaker_7_link, 
-        $speaker_8, 
-        $speaker_8_link, 
-        $speaker_9, 
-        $speaker_9_link,
-        $speaker_10, 
-        $speaker_10_link,  
-        $eventLocation, 
-        $desc, 
-        $event_id
-    ));
+        $name, $year, $mainImg, $driveLink, $img_1, $img_2, $img_3, $img_4, $speaker_1, $speaker_1_link, $speaker_2, $speaker_2_link, $speaker_3, $speaker_3_link, $speaker_4, $speaker_4_link, $speaker_5, $speaker_5_link, $speaker_6, $speaker_6_link, $speaker_7, $speaker_7_link, $speaker_8, $speaker_8_link, $speaker_9, $speaker_9_link, $speaker_10, $speaker_10_link, $eventLocation, $desc, $event_id));
     echo "
     <script>
         toastr.success('Update , Event INFO has Been Successfully Updated.')
@@ -569,7 +535,7 @@ function updateCommitte($name, $abbreviation, $describtion,$committeId){
         $abbreviation,
         $describtion,
         $committeId
-    ));
+    )); 
     echo "
     <script>
         toastr.success('Update , Committe INFO has Been Successfully Update.')
@@ -620,7 +586,7 @@ function addEvent($name ,
         e_name,
         e_season,
         main_img,
-        imgs_link,
+        imgs_link, 
         img_1,
         img_2,
         img_3,

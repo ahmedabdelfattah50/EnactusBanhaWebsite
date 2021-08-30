@@ -2,7 +2,7 @@
 <html lang="en"> 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $pageTitle?></title>
     <link rel="icon" href="images/enactus_icon.png">
@@ -11,8 +11,20 @@
     <link rel="stylesheet" href="<?php echo $cssPath?>fancyBox.min.css" />
     <link rel="stylesheet" href="<?php echo $cssPath?>slick.css" />
     <link rel="stylesheet" href="<?php echo $cssPath?>slick-theme.css" />
+    <link rel="stylesheet" href="<?php echo $cssPath?>toastr.min.css">
     <link rel="stylesheet" href="<?php echo $cssPath?>basics.css" />
     <link rel="stylesheet" href="<?php echo $cssPath?><?php echo $pageStyle; ?>"/>
+    <!-- ============== JavaScripts =============== -->
+    <script src="<?php echo $jsPath?>jquery_3.6.0.min.js"></script>
+    <script src="<?php echo $jsPath?>propper.js"></script>
+    <script src="<?php echo $jsPath?>bootstrap_ltr_4.5.3.bundle.min.js"></script>
+    <script src="<?php echo $jsPath?>slick.min.js"></script>
+    <script src="<?php echo $jsPath?>fancyBox.min.js"></script>
+    <script src="<?php echo $jsPath?>mixitup.min.js"></script>
+    <script src="<?php echo $jsPath?>toastr.min.js"></script>
+    <script src="<?php echo $jsPath?>semantic.min.js"></script>
+    <script src="<?php echo $jsPath?>basics.js"></script>
+    <script src="<?php echo $jsPath?>main.js"></script>
 </head>
 <body>
     <!-- ============== Start Navbar =============== -->    

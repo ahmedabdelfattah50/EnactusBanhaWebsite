@@ -90,7 +90,7 @@
                 $speaker_10_link = $_POST['speaker_10_link'];
 
                 $eventLocation = $_POST['eventLocation'];
-                $desc = $_POST['desc'];
+                $desc = $_POST['desc']; 
 
                 updateEvent(
                     $name,
