@@ -70,17 +70,59 @@ function insert_committee ($name, $abbreviation, $describtion){
 
 function addSeason($year, $active_season){
     global $con;
-    $stmt = $con->prepare("INSERT INTO season(year, active_season) Value(:year, :active_season)");
-    $stmt->execute(
-    array(
-        ":year"       => $year,
-        ":active_season"        => $active_season
-    ));
-    echo "
-    <script>
-        toastr.success('Great , Season has been successfully added .')
-    </script>";
-    header("Refresh:3;url=season.php");
+    $stmCheck = $con->prepare("SELECT * FROM season WHERE year=?");
+    $stmCheck->execute(array($year));
+    $rowsStmCheck = $stmCheck->fetchAll(PDO::FETCH_ASSOC);
+
+    if(empty( $rowsStmCheck )){
+        $stmt = $con->prepare("INSERT INTO season(year, active_season) Value(:year, :active_season)");
+        $stmt->execute(
+        array(
+            ":year"       => $year,
+            ":active_season"        => $active_season
+        ));
+        echo "
+        <script>
+            toastr.success('Great , Season has been successfully added .')
+        </script>";
+        header("Refresh:3;url=season.php");
+    } else {
+        echo "
+        <script>
+            toastr.error('Failed , Season year has alread been used.')
+        </script>";
+    }
+}
+
+/*
+==========================  
+  insert new Collage
+==========================
+*/
+
+function addCollage($name){
+    global $con;
+    $stmCheck = $con->prepare("SELECT * FROM collage WHERE name=?");
+    $stmCheck->execute(array($name));
+    $rowsStmCheck = $stmCheck->fetchAll(PDO::FETCH_ASSOC);
+
+    if(empty( $rowsStmCheck )){
+        $stmt = $con->prepare("INSERT INTO collage(name) Value(:name)");
+        $stmt->execute(
+        array(
+            ":name"  => $name
+        ));
+        echo "
+        <script>
+            toastr.success('Great , College has been successfully added.')
+        </script>";
+        header("Refresh:3;url=college.php");
+    } else {
+        echo "
+        <script>
+            toastr.error('Failed , College name has alread been used.')
+        </script>";
+    }
 }
 
 /*
@@ -91,15 +133,60 @@ function addSeason($year, $active_season){
 
 function updateSeason($year, $active_season, $seasonId){
     global $con;
-    $stmt = $con->prepare("UPDATE season SET year = ?,active_season = ? WHERE id =?");
-    $stmt->execute(
-        array($year, $active_season, $seasonId)
-    );
-    echo "
-    <script>
-        toastr.success('Update , Season INFO has Been Successfully Update.')
-    </script>";
-    header("Refresh:3;url=season.php");
+    $stmCheck = $con->prepare("SELECT * FROM season WHERE year=? AND Not id = ?");
+    $stmCheck->execute(array($year, $seasonId));
+    $rowsStmCheck = $stmCheck->fetchAll(PDO::FETCH_ASSOC);
+
+    if(count($rowsStmCheck) == 0){
+        // echo "yes update " . count($rowsStmCheck) . " id = " . $collageId;
+        $stmt = $con->prepare("UPDATE season SET year = ?,active_season = ? WHERE id =?");
+        $stmt->execute(
+            array($year, $active_season, $seasonId)
+        );
+        echo "
+        <script>
+            toastr.success('Update , Season INFO has Been Successfully Update.')
+        </script>";
+        header("Refresh:3;url=season.php");
+    } else if(count($rowsStmCheck) == 1) {
+        // echo "no update " . count($rowsStmCheck);
+        echo "
+        <script>
+            toastr.error('Failed , Season name has alread been used.')
+        </script>";
+    }
+}
+
+/*
+==========================  
+  update Collage
+==========================
+*/
+
+function updateCollage($name, $collageId){
+    global $con;
+    $stmCheck = $con->prepare("SELECT * FROM collage WHERE name=? AND Not id = ?");
+    $stmCheck->execute(array($name, $collageId));
+    $rowsStmCheck = $stmCheck->fetchAll(PDO::FETCH_ASSOC);
+
+    if(count($rowsStmCheck) == 0){
+        // echo "yes update " . count($rowsStmCheck) . " id = " . $collageId;
+        $stmt = $con->prepare("UPDATE collage SET name = ? WHERE id =?");
+        $stmt->execute(
+            array($name, $collageId)
+        );
+        echo "
+        <script>
+            toastr.success('Update , College INFO has Been Successfully Update.')
+        </script>";
+        header("Refresh:3;url=college.php");
+    } else if(count($rowsStmCheck) == 1) {
+        // echo "no update " . count($rowsStmCheck);
+        echo "
+        <script>
+            toastr.error('Failed , College name has alread been used.')
+        </script>";
+    }
 }
 
 /*
