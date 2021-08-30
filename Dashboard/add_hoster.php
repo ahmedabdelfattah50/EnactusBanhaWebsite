@@ -37,7 +37,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["first_name"]) && !empt
         $avatar = rand(0,1000000) . "_" . $avatar_name ;
         $destination = "img/hosters/" . $avatar ;
 
-        
         /*check if info already added*/
         global $con;
         $stmt = $con->prepare("SELECT * FROM hosters WHERE email = ?");

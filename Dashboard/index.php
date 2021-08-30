@@ -6,7 +6,7 @@
         
         if(isset($_SESSION['username'])) { 
             header("Location:dashboard.php");
-            exit();
+            exit(); 
         } 
          
         if($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -27,7 +27,6 @@
                 $_SESSION['last_name'] = $hoster['last_name'];
                 $_SESSION['username'] = $hoster['username'];
                 $_SESSION['position'] = $hoster['position_id'];
-                $_SESSION['admin_trust'] = $hoster['admin_trust'];
                 header("Location:dashboard.php");
                 exit();
             } else {

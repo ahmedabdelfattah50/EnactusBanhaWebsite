@@ -30,8 +30,13 @@
             $stmt = $con->prepare("DELETE FROM opinion WHERE id = :opinion_id");
             $stmt->bindParam(":opinion_id" , $opinion_id);
             $stmt->execute();
-            echo "<h3 class='alert alert-danger'>Opnion has deleted successfuly ... you will return to previous page in 2s</h3>";
-            header("refresh:2;url=get_opinion.php");
+            echo "
+            <script>
+                toastr.error('Opnion has deleted successfuly.')
+            </script>";
+            // echo "<h3 class='alert alert-danger'>Opnion has deleted successfuly ... you will return to previous page in 2s</h3>";
+            // header("refresh:2;url=get_opinion.php");
+            header("Refresh:3;url=get_opinion.php");
         }else if($_GET['from'] == "event" && isset($_GET['id']) && is_numeric($_GET['id'])){
             $event_id = $_GET['id'];
             $stmt = $con->prepare("DELETE FROM event WHERE id = :event_id");

@@ -3,7 +3,7 @@
     session_start();
     $page_name = "Get All Opinions";
     $style = "messages.css";
-    $script = "";
+    $script = ""; 
     require_once "init.php";
     if(isset($_SESSION['first_name'])){?>
     
@@ -13,8 +13,18 @@
         <h3 class="text-center mt-2 mb-3">Welcome To Website Dashboard .</h3>
         <p class="text-center">From This Page You Can Show Members Opinion</p>
 
+        <a href="opinion_operations.php?operation=add" class="btn btn-info">Add New Opinion <i class="fas fa-gavel"></i></i></a>
+    
         <?php $allData = getAllData("opinion");?>
             <div class="row mt-5">
+        <?php
+        if(empty($allData)){?>
+        <div class="container">
+          <h2 class="alert alert-danger mt-5">Sorry, there are no data here</h2>
+        </div>
+        <?php
+        } else {
+        ?>
         <?php foreach ($allData as $all_opinion){ ?>
             <div class="col-md-6">
             <div class="ui cards mb-3 text-center">
@@ -22,36 +32,38 @@
                     <div class="content">
                     <img style="margin: 20px 0;width:30%" src="img/testimonial.gif" alt="testimonial">
                     <div class="header pb-3">
-                        <?php echo $all_opinion["name"];?>
+                        <?php echo $all_opinion["opinion"];?>
                         <span style="font-size: 9px;" class="meta">
-                    <?php echo $all_opinion["season"];?>
+                        <!-- <php echo "Name : " . $all_opinion["first_name"] ." " . $all_opinion["first_name"]?> -->
                     </span>
                     </div>
-                    <div class="meta">
-                    <?php echo $all_opinion["email"];?>
+                    <div class="description">
+                        <?php echo "Name : " . $all_opinion["first_name"] ." " . $all_opinion["first_name"]?>
                     </div>
                     <div class="description pb-3">
-                    <?php echo $all_opinion["opinion"];?>
+                        <?php echo "Email : " . $all_opinion["email"];?>
                     </div>
                     <div class="meta">
-                    <?php echo "Submit Time :" . $all_opinion["time"];?>
+                    <?php echo "Commity	 :" . $all_opinion["commity"];?>
                     </div>
 
                     <div class="meta pt-2">
-                    <?php echo "Current Season : " . $all_opinion["current_season"];?>
+                    <?php echo "Position : " . $all_opinion["position"];?>
                     </div>
 
                     </div>
                     <div class="extra content">
                     <div class="ui two buttons">
+                       <a class="ui basic blue button" style="text-decoration: none !important;color:#17A2B8!important" href="opinion_operations.php?operation=edit&id=<?php echo $all_opinion["id"]?>"> Edit </a>
                        <a class="ui basic red button" style="text-decoration: none !important;color:#db2828!important" href="delete.php?id=<?php echo $all_opinion["id"]?>&from=opinion"> Delete </a>
                     </div>
                     </div>
                     </div>
                 </div>
+            </div>
+            <?php } ?>
         </div>
         <?php } ?>
-        </div>
 
             <?php if (count_users("id","contact") == 0){?>
                 <p style="margin-top: 100px;font-weight: 700;font-size: 30px;" class="text-danger text-center">* There is No Opnion To Show *</p>

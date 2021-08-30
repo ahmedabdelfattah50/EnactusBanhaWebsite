@@ -125,6 +125,33 @@ function addCollage($name){
     }
 }
 
+
+/*
+==========================  
+  insert new Opinion
+==========================
+*/
+
+function addOpinion($first_name, $last_name, $email, $commity, $position, $opinion){
+    global $con;
+    
+    $stmt = $con->prepare("INSERT INTO opinion(first_name, last_name, email, commity, position, opinion) Value(:first_name, :last_name, :email, :commity, :position, :opinion)");
+    $stmt->execute(
+    array(
+        ":first_name" => $first_name, 
+        ":last_name" => $last_name, 
+        ":email" => $email, 
+        ":commity" => $commity, 
+        ":position" => $position, 
+        ":opinion" => $opinion
+    ));
+    echo "
+    <script>
+        toastr.success('Great , Opinion has been successfully added.')
+    </script>";
+    header("Refresh:3;url=get_opinion.php");
+}
+
 /*
 ==========================  
   update Season
@@ -187,6 +214,25 @@ function updateCollage($name, $collageId){
             toastr.error('Failed , College name has alread been used.')
         </script>";
     }
+}
+
+/*
+==========================  
+  update Opinion
+==========================
+*/
+
+function updateOpinion($first_name, $last_name, $email, $commity, $position, $opinion, $opinionId){
+    global $con;
+    $stmt = $con->prepare("UPDATE opinion SET first_name = ?, last_name = ?, email = ?, commity = ?, position = ?, opinion = ? WHERE id =?");
+    $stmt->execute(
+        array($first_name, $last_name, $email, $commity, $position, $opinion, $opinionId)
+    );
+    echo "
+    <script>
+        toastr.success('Update , Opinion INFO has Been Successfully Update.')
+    </script>";
+    header("Refresh:3;url=get_opinion.php");
 }
 
 /*

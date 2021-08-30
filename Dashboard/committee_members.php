@@ -70,7 +70,7 @@ if(isset($_SESSION['first_name'])){
         if(empty($members_allData)){?>
           <h2 class="alert alert-danger mt-5">Sorry, there are no data here</h2>
       <?php
-        } else {
+        } else { 
       ?>
         <div class="row">
           <div class="col-12">
