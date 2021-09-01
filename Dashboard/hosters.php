@@ -38,7 +38,7 @@
                   <?php }
                 ?>
               </div>
-              <?php  
+              <?php   
               if(empty($HosterData)){?>
                 <div class="alert alert-danger">Sorry, No Data Found</div>
               <?php

@@ -5,6 +5,7 @@
     $pageActive = "home";
 
     include "init.php";
+    $allEvents = getAllData("event");
 ?>
 <!-- ============== End header =============== -->
     <!-- ============== Start go_up icon =============== -->
@@ -15,39 +16,27 @@
         <div class="d-flex flex-column align-items-center justify-content-center">
             <div id="MainCarouselId" class="carousel slide col" data-ride="carousel">
                 <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active" style="background-image: url(images/backgrounds/event_1.jpg);">                            
+                    <?php  
+                    $sliderCounter = 1;
+                    foreach($allEvents as $allEvent){ ?>
+                    <div class="carousel-item <?php 
+                                if($sliderCounter == 1){
+                                    echo 'active';
+                                } ?>" 
+                        style="background-image: url(Dashboard/img/events/<?php echo $allEvent['main_img']?>);">                            
                         <div class="container">
                             <div class="carousel-content d-flex flex-column justify-content-center align-items-center">
                                 <div class="sliderContent text-center">
-                                    <h2>SHINE UP CONFERENCE</h2>
-                                    <h3>BU ,BANHA ,QALUIBA ,EGYPT</h3>
-                                    <a href="#">View More <i class="fas fa-angle-right"></i></a>
+                                    <h2><?php echo $allEvent['e_name']?></h2>
+                                    <h3><?php echo $allEvent['e_location']?></h3>
+                                    <a href="events.php">View More <i class="fas fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item" style="background-image: url(images/backgrounds/event_2.jpg);">
-                        <div class="container">
-                            <div class="carousel-content d-flex flex-column justify-content-center">
-                                <div class="sliderContent text-center">
-                                    <h2>SHINE UP CONFERENCE</h2>
-                                    <h3>BU ,BANHA ,QALUIBA ,EGYPT</h3>
-                                    <a href="#">View More <i class="fas fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div> 
-                    </div>
-                    <div class="carousel-item" style="background-image: url(images/backgrounds/event_3.jpg);">
-                        <div class="container">
-                            <div class="carousel-content d-flex flex-column justify-content-center">
-                                <div class="sliderContent text-center">
-                                    <h2>SHINE UP CONFERENCE</h2>
-                                    <h3>BU ,BANHA ,QALUIBA ,EGYPT</h3>
-                                    <a href="#">View More <i class="fas fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>                            
-                    </div>
+                    <?php 
+                    $sliderCounter++;
+                    } ?>
                 </div>
                 <a class="carousel-control-prev" href="#MainCarouselId" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -113,7 +102,68 @@
                 <h2>WHO’S LEADING</h2>
             </div>
             <div class="allHeads d-flex justify-content-center justify-content-xl-start">
-                <a href="#">
+                <?php 
+                    $newHighBoards = newBoardWithActiveSeason();
+                ?>
+
+                <?php 
+                    foreach($newHighBoards as $newHighBoard){
+                ?>
+                    <a href="#">
+                        <div class="headSec">
+                            <div class="headImgSec">
+                                <img src="Dashboard/img/hosters/<?php echo $newHighBoard['photo']?>" alt="">
+                            </div>
+                            <div class="headData text-center">
+                                <a href="#"><h2><?php echo $newHighBoard['first_name'] . " " . $newHighBoard['last_name']?></h2></a>
+                                <h3>Head of <?php echo $newHighBoard['commity_name'] ?></h3>
+                            </div>
+                            <?php if(!empty($newHighBoard['facebook']) || !empty($newHighBoard['instgram']) || !empty($newHighBoard['twitter']) || !empty($newHighBoard['linked_in'])){ ?>
+                            <div class="headSocialMedia flex-column">
+                                <?php 
+                                    if(isset($newHighBoard['facebook']) && !empty($newHighBoard['facebook'])){?>
+                                        <a href="<?php echo $newHighBoard['facebook']?>" target="_blank">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                <?php
+                                    }
+                                ?>
+                                <?php 
+                                    if(isset($newHighBoard['instgram']) && !empty($newHighBoard['instgram'])){?>
+                                        <a href="<?php echo $newHighBoard['instgram']?>" target="_blank">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                <?php
+                                    }
+                                ?>
+                                <?php 
+                                    if(isset($newHighBoard['twitter']) && !empty($newHighBoard['twitter'])){?>
+                                        <a href="<?php echo $newHighBoard['twitter']?>" target="_blank">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                <?php
+                                    }
+                                ?>
+                                <?php 
+                                    if(isset($newHighBoard['linked_in']) && !empty($newHighBoard['linked_in'])){?>
+                                        <a href="<?php echo $newHighBoard['linked_in']?>" target="_blank">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                <?php
+                                    }
+                                ?>
+                            </div>
+                            <?php
+                            }
+                            ?>
+
+                        </div>
+                    </a>
+                <?php 
+                    }
+                ?>
+
+                <!-- <a href="#">
                     <div class="headSec">
                         <div class="headImgSec">
                             <img src="images/team/2.jpg" alt="">
@@ -137,8 +187,10 @@
                             </a>
                         </div>
                     </div>
-                </a>
-                <a href="#">
+                </a> -->
+
+
+                <!-- <a href="#">
                     <div class="headSec">
                         <div class="headImgSec">
                             <img src="images/team/2.jpg" alt="">
@@ -162,32 +214,9 @@
                             </a>
                         </div>
                     </div>
-                </a>
-                <a href="#">
-                    <div class="headSec">
-                        <div class="headImgSec">
-                            <img src="images/team/2.jpg" alt="">
-                        </div>
-                        <div class="headData text-center">
-                            <a href="#"><h2>Prof. Ghada Amer</h2></a>
-                            <h3>FACULTY ADVISOR</h3>
-                        </div>
-                        <div class="headSocialMedia flex-column">
-                            <a href="#">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
-                    </div>
-                </a>                
+                </a> -->
+                
+                
             </div>
             <a href="#" class="viewMoreBtn">View More <i class="fas fa-angle-right"></i></a>
         </div>

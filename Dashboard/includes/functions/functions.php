@@ -325,16 +325,36 @@ function getData_with_id($table,$id){
 // select HighBoard
 function selectHighBoard(){
     global $con; 
-    $stmt = $con->prepare("SELECT * FROM hosters Where old=0");
-    $stmt->execute(array());
+    $stmtActiveSeason = $con->prepare("SELECT * FROM season WHERE active_season=1");
+    $stmtActiveSeason->execute();
+    $activeSeasonData = $stmtActiveSeason->fetch(PDO::FETCH_ASSOC);
+    $activeSeasonYear = $activeSeasonData['year'];
+
+    $stmt = $con->prepare("SELECT * FROM hosters WHERE season_year ='" . trim($activeSeasonYear) . "' AND old = 0");
+    $stmt->execute();
     return $stmt->fetchAll();
 }
+
+// select HighBoard
+function newBoardWithActiveSeason(){
+    global $con; 
+    $stmtActiveSeason = $con->prepare("SELECT * FROM season WHERE active_season=1");
+    $stmtActiveSeason->execute();
+    $activeSeasonData = $stmtActiveSeason->fetch(PDO::FETCH_ASSOC);
+    $activeSeasonYear = $activeSeasonData['year'];
+
+    $stmt = $con->prepare("SELECT * FROM hosters WHERE ((position_name = 'Head' OR position_name = 'President' OR position_name = 'Vice President' OR position_name = 'Project Director') AND season_year ='" . trim($activeSeasonYear) . "' AND old = 0)");
+    $stmt->execute();
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $rows;
+}
+
 
 
 // select HighBoardOld
 function selectHighBoardOld(){
     global $con; 
-    $stmt = $con->prepare("SELECT * FROM hosters Where old=1");
+    $stmt = $con->prepare("SELECT * FROM hosters WHERE old=1");
     $stmt->execute(array());
     return $stmt->fetchAll();
 }

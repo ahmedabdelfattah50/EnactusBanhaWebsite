@@ -29,23 +29,37 @@
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
                     <?php 
-                      if($formType = "members"){?>
-                        <img src="img/members/<?php echo $all_data["img"]?>" alt="Member" class="rounded-circle" width="120" height="120">
+                      if($formType == "members"){
+                        if(empty($all_data["img"])){?>
+                          <img src="img/members/default.jpg" alt="Member" class="rounded-circle" width="120" height="120">
+                        <?php
+                          } else {?>
+                          <img src="img/members/<?php echo $all_data["img"]?>" alt="Member" class="rounded-circle" width="120" height="120">
+                        <?php
+                          }
+                        ?>
                     <?php
-                      } else if($formType = "hosters" || $formType = "dashboard"){?>
-                        <img src="img/hosters/<?php echo $all_data["photo"]?>" alt="Admin" class="rounded-circle" width="120" height="120">
+                      } else if($formType == "hosters" || $formType == "dashboard"){
+                        if(empty($all_data["photo"])){?>
+                          <img src="img/hosters/default.jpg" alt="Admin" class="rounded-circle" width="120" height="120">
+                      <?php
+                        } else {?>
+                          <img src="img/hosters/<?php echo $all_data["photo"]?>" alt="Admin" class="rounded-circle" width="120" height="120">
+                      <?php
+                        }
+                      ?>
                     <?php
                       }
                     ?>
                     <div class="mt-3">
                       <h4><?php echo $all_data["first_name"] . " " . $all_data["last_name"];?></h4>
                       <?php 
-                        if($formType = "members"){?>
+                        if($formType == "members"){?>
                           <p class="text-secondary mb-1">Member in <?php echo $all_data["commity"];?> Commity</p>
                           <p class="text-muted font-size-sm"><?php echo $all_data["university"] . " " . " University " . " , Egypt"; ?></p>
                           <p class="text-muted font-size-sm"><?php echo "Member From : " . $all_data["season"]; ?></p>
                       <?php
-                        } else if($formType = "hosters" || $formType = "dashboard"){?>
+                        } else if($formType == "hosters" || $formType == "dashboard"){?>
                           <p class="text-secondary mb-1"><?php echo $all_data["position_name"];?> of <?php echo $all_data["commity_name"];?></p>
                           <p class="text-muted font-size-sm"><?php echo $all_data["university_name"] . " " . " University " . " , Egypt"; ?></p>
                           <p class="text-muted font-size-sm"><?php echo "Member From : " . $all_data["season_year"]; ?></p>
@@ -78,7 +92,7 @@
                     }
                   ?>
                   <?php 
-                    if($formType = "members"){
+                    if($formType == "members"){
                       if(!empty($all_data["insta"])){?>
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                           <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>
@@ -86,7 +100,7 @@
                         </li>
                       <?php
                         }
-                    } else if($formType = "hosters" || $formType = "dashboard"){
+                    } else if($formType == "hosters" || $formType == "dashboard"){
                       if(!empty($all_data["instgram"])){?>
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                           <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>
@@ -107,14 +121,14 @@
                   ?>                                    
                 </ul>
               </div>
-            </div>
+            </div> 
             <div class="col-md-8">
             <div class="content">
                 <div class="container">
                     <h3 class="content_heaader"><i class="fal fa-address-card"></i> More Information</h3>
                     <img style="display: block;margin:auto;margin-bottom:50px" src="img/line.png" alt="line">
                       <?php 
-                        if($formType = "members"){ ?>
+                        if($formType == "members"){ ?>
                           <h2 class="m-0 mb-2" style="color:#3d6581">Name: <span style="color: #b51b43;"><?php echo $all_data["first_name"] . " " . $all_data["last_name"];?></span></h2>
                           <h2 class="m-0 mb-2" style="color:#3d6581">Commitee: <span style="color: #b51b43;"><?php echo $all_data["commity"]?></span></h2>
                           <h2 class="m-0 mb-2" style="color:#3d6581">Birthday: <span style="color: #b51b43;"><?php echo $all_data["birthday"]?></span></h2>
@@ -126,7 +140,7 @@
                           <h2 class="m-0 mb-2" style="color:#3d6581">College Year: <span style="color: #b51b43;"><?php echo $all_data["collage_year"]?></span></h2>
                           <h2 class="m-0 mb-2" style="color:#3d6581">About Hoster: <span style="color: #b51b43;"><?php echo $all_data["about"]?></span></h2>
                         <?php
-                        } else if($formType = "hosters" || $formType = "dashboard"){?>
+                        } else if($formType == "hosters" || $formType == "dashboard"){?>
                           <h2 class="m-0 mb-2" style="color:#3d6581">Name: <span style="color: #b51b43;"><?php echo $all_data["first_name"] . " " . $all_data["last_name"];?></span></h2>
                           <h2 class="m-0 mb-2" style="color:#3d6581">Commitee: <span style="color: #b51b43;"><?php echo $all_data["commity_name"]?></span></h2>
                           <h2 class="m-0 mb-2" style="color:#3d6581">Birthday: <span style="color: #b51b43;"><?php echo $all_data["birthday"]?></span></h2>
