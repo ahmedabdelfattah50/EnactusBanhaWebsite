@@ -7,7 +7,7 @@
   include "init.php";
     if(isset($_SESSION['first_name'])){
 if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["first_name"]) && !empty($_POST["last_name"]) && !empty($_POST["email"]))
-{
+{ 
     $first_name = filter_var($_POST["first_name"] , FILTER_SANITIZE_STRING);
     $last_name = filter_var($_POST["last_name"] , FILTER_SANITIZE_STRING);
     $email = filter_var($_POST["email"] , FILTER_SANITIZE_EMAIL);

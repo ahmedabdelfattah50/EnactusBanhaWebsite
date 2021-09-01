@@ -3,7 +3,7 @@
   session_start();
   $page_name = "About US";
   $style = "add_member.css";
-  $script = "members.js";
+  $script = "members.js"; 
   include "init.php";
     if(isset($_SESSION['first_name'])){
         if (isset($_GET['id']) && is_numeric($_GET['id'])){

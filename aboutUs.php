@@ -5,6 +5,7 @@
     $pageActive = "aboutUs";
 
     include "init.php";
+    $aboutUsData = aboutUsData();
 ?>
 <!-- ============== End header =============== -->
     <!-- ============== Start go_up icon =============== -->
@@ -18,7 +19,7 @@
                 <h3><a href="index.html">Home </a><i class="fas fa-chevron-right"></i><a href="aboutUs.html"> About Us</a></h3>
             </div>
         </div>
-    </div>
+    </div>  
     <!-- ============== End pageHeader =============== -->
     <!-- ============== Start whatWeSee =============== -->
     <div class="whatWeSee">
@@ -35,7 +36,7 @@
                         </div>
                         <div class="secContent text-center">
                             <h2>Vision</h2>
-                            <p>Create better, more sustainable Egyptian communities.</p>
+                            <p><?php echo $aboutUsData[0]['content']?></p>
                         </div>
                     </div>
                 </div>
@@ -48,7 +49,7 @@
                         </div>
                         <div class="secContent text-center">
                             <h2>Mission</h2>
-                            <p>Engage the next generation of entrepr- eneurial leaders to use innovation and business principles for the improvement of the Egyptian community.</p>
+                            <p><?php echo $aboutUsData[1]['content']?></p>
                         </div>
                     </div>
                 </div>
@@ -61,7 +62,7 @@
                         </div>
                         <div class="secContent text-center">
                             <h2>Goal</h2>
-                            <p>Train Generation To inovative and green soulutions.</p>
+                            <p><?php echo $aboutUsData[2]['content']?></p>
                         </div>
                     </div>
                 </div>
@@ -83,7 +84,7 @@
                         </div>
                         <div class="secContent text-center">
                             <h2>Entrepreneurial</h2>
-                            <p>Having the perspective to see an opportunity and the talent to create value from that opportunity.</p>
+                            <p><?php echo $aboutUsData[3]['content']?></p>
                         </div>
                     </div>
                 </div>
@@ -96,7 +97,7 @@
                         </div>
                         <div class="secContent text-center">
                             <h2>Action</h2>
-                            <p>The willingness to do something and the commitment to see it through even when the outcome is not guaranteed.</p>
+                            <p><?php echo $aboutUsData[4]['content']?></p>
                         </div>
                     </div>
                 </div>
@@ -109,7 +110,7 @@
                         </div>
                         <div class="secContent text-center">
                             <h2>Us</h2>
-                            <p>A group of people who see themselves connected in some important way; individuals that are part of a greater whole.</p>
+                            <p><?php echo $aboutUsData[5]['content']?></p>
                         </div>
                     </div>
                 </div>
@@ -163,30 +164,29 @@
                 <h2>WHAT WE FEEL</h2>
             </div>
             <div class="testmonial-slider d-flex justify-content-center text-center">
+                <?php 
+                    $allTestmonials = allTestmonials();
+                    foreach($allTestmonials as $allTestmonial){
+                ?>
                 <div class="testmonial-item">
-                    <p class="testmonial-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam doloribus animi, distinctio aliquid, aut possimus impedit expedita, quisquam fuga explicabo consequatur ducimus sunt nam exercitationem esse. Animi nulla non labore ea tempora, soluta vero atque autem aliquid dicta reprehenderit. Voluptates corporis, quod aspernatur facere quidem quia suscipit sint autem asperiores commodi expedita ratione dicta molestiae ut quos delectus reiciendis ipsa.</p>
+                    <p class="testmonial-text"><?php echo $allTestmonial['opinion'] ?></p>
                     <div class="testmonial-data d-flex flex-column align-items-center">
-                        <img src="images/team/2.jpg" class="rounded-circle" alt="member-image">
-                        <h2 class="textmonial-name">Mohamed F. Razzk</h2>
-                        <h3 class="testmonial-role">IT Manager</h3>
+                        <?php 
+                            if(empty($allTestmonial['photo'])){?>
+                                <img src="Dashboard/img/opinions/default.jpg" class="rounded-circle" alt="member-image">
+                        <?php
+                            } else {?>
+                                <img src="Dashboard/img/opinions/<?php echo $allTestmonial['photo']?>" class="rounded-circle" alt="member-image">
+                        <?php
+                            }
+                        ?>
+                        <h2 class="textmonial-name"><?php echo $allTestmonial['first_name'] . " " . $allTestmonial['last_name'] ?></h2>
+                        <h3 class="testmonial-role"><?php echo $allTestmonial['position'] . " of " .  $allTestmonial['commity'] ?></h3>
                     </div>
                 </div>
-                <div class="testmonial-item">
-                    <p class="testmonial-text">Lorem, ipsum doloelectus reiciendis ipsa.</p>
-                    <div class="testmonial-data d-flex flex-column align-items-center">
-                        <img src="images/team/2.jpg" class="rounded-circle" alt="member-image">
-                        <h2 class="textmonial-name">Mohamed F. Razzk</h2>
-                        <h3 class="testmonial-role">IT Manager</h3>
-                    </div>
-                </div>
-                <div class="testmonial-item">
-                    <p class="testmonial-text">Lorem, ipsum dolor sit amet aliquid, aut possimus impedit expedita, quisquam fuga explicabo consequatur ducimus sunt nam exercitationem esse. Animi nulla non labore ea tempora, soluta vero atque autem aliquid dicta reprehenderit. Voluptates corporis, quod aspernatur facere quidem quia suscipit sint autem asperiores commodi expedita ratione dicta molestiae ut quos delectus reiciendis ipsa.</p>
-                    <div class="testmonial-data d-flex flex-column align-items-center">
-                        <img src="images/team/2.jpg" class="rounded-circle" alt="member-image">
-                        <h2 class="textmonial-name">Mohamed F. Razzk</h2>
-                        <h3 class="testmonial-role">IT Manager</h3>
-                    </div>
-                </div>
+                <?php
+                    }
+                ?>
             </div>
         </div>
     </div>

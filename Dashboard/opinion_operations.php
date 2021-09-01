@@ -18,7 +18,7 @@ if(isset($_SESSION['first_name'])){
         //     $name = filter_var($_POST["name"] , FILTER_SANITIZE_STRING);
         //     $email = filter_var($_POST["email"] , FILTER_SANITIZE_EMAIL);
         //     $opinion = filter_var($_POST["opinion"] , FILTER_SANITIZE_STRING);
-
+ 
         //     echo "
         //     <script>
         //         toastr.error('Sorry Season , Commity and Opinion Must be filled.')
@@ -35,16 +35,30 @@ if(isset($_SESSION['first_name'])){
 
         $first_name = $_POST['first_name'];    
         $last_name = $_POST['last_name'];    
-        $email = $_POST['email'];    
+        $email = $_POST['email'];   
+        
         $commity = $_POST['commity'];    
         $position = $_POST['position'];    
         $opinion = $_POST['opinion'];    
         $statusOpinion = $_POST['statusOpinion'];    
 
         if($opinionOperation == "add" && $statusOpinion == "addOpinion"){
-            addOpinion($first_name, $last_name, $email, $commity, $position, $opinion);
+            if(isset($_FILES['photo'])){
+                    $opinionPhoto = "opinionPhoto_" . $_FILES['photo']['name'];
+                move_uploaded_file($_FILES['photo']['tmp_name'],"img/opinions/$opinionPhoto");
+            } 
+            addOpinion($first_name, $last_name, $email, $opinionPhoto, $commity, $position, $opinion);
         } else if($opinionOperation == "edit" && $statusOpinion == "editOpinion"){
-            updateOpinion($first_name, $last_name, $email, $commity, $position, $opinion, $opinionId);
+        
+            $result = getData_with_id("opinion",$opinionId);
+
+            if(empty($_FILES['photo']['name'])){
+                $opinionPhoto = $result['photo'];
+            } else {
+                $opinionPhoto = "opinionPhoto_" . $_FILES['photo']['name'];
+                move_uploaded_file($_FILES['photo']['tmp_name'],"img/opinions/$opinionPhoto");
+            }
+            updateOpinion($first_name, $last_name, $email, $opinionPhoto, $commity, $position, $opinion, $opinionId);
         }
 
     };
@@ -80,6 +94,10 @@ if(isset($_SESSION['first_name'])){
         <div class="form-group col-md-12">
             <label>Email</label>
             <input style="direction: ltr;" name="email" type="email" class="form-control" required>
+        </div>
+        <div class="form-group col-md-12">
+            <label>Person Photo</label>
+            <input style="direction: ltr;padding:0" name="photo" type="file" class="form-control">
         </div>
         <div class="form-group col-md-6">
             <label for="commity">Commity</label>
@@ -128,6 +146,10 @@ if(isset($_SESSION['first_name'])){
         <div class="form-group col-md-12">
             <label>Email</label>
             <input style="direction: ltr;" name="email" value="<?php echo $opinionData['email']?>" type="email" class="form-control" required>
+        </div>
+        <div class="form-group col-md-12">
+            <label>Person Photo</label>
+            <input style="direction: ltr;padding:0" name="photo" type="file" class="form-control">
         </div>
         <div class="form-group col-md-6">
             <label for="commity">Commity</label>

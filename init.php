@@ -5,9 +5,9 @@ date_default_timezone_set('Africa/Cairo');
     $jsPath         = "layout/js/";
     $tempPath       = "includes/template/";
     $funPath        = "Dashboard/includes/functions/";
-
+ 
 
     include 'conection.php'; 
+    include $funPath . "functions.php"; 
     include $tempPath . "header.php";
     
-    include $funPath . "functions.php"; 

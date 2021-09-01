@@ -21,7 +21,7 @@ if(isset($_SESSION['first_name']))
 <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data">
   <div class="form-row">
         <div class="form-group col-md-6">
-            <label>Event Name</label>
+            <label>Event Name</label> 
             <input style="direction: ltr;" type="text" class="form-control" value="<?php echo $event_data['e_name']?>" readonly>
         </div>
         <div class="form-group col-md-6">

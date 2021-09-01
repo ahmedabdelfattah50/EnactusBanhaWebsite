@@ -29,7 +29,7 @@
                                 <div class="sliderContent text-center">
                                     <h2><?php echo $allEvent['e_name']?></h2>
                                     <h3><?php echo $allEvent['e_location']?></h3>
-                                    <a href="events.php">View More <i class="fas fa-angle-right"></i></a>
+                                    <a href="event_data.php?event=<?php echo $allEvent['id']?>">View More <i class="fas fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,14 @@
                     <a href="#">
                         <div class="headSec">
                             <div class="headImgSec">
+                            <?php if(empty($newHighBoard['photo'])){?>
+                                <img src="Dashboard/img/members/default.jpg" alt="Member" class="rounded-circle" width="120" height="120">
+                            <?php
+                            } else {?>
                                 <img src="Dashboard/img/hosters/<?php echo $newHighBoard['photo']?>" alt="">
+                            <?php
+                            }
+                            ?>
                             </div>
                             <div class="headData text-center">
                                 <a href="#"><h2><?php echo $newHighBoard['first_name'] . " " . $newHighBoard['last_name']?></h2></a>
@@ -156,67 +163,11 @@
                             <?php
                             }
                             ?>
-
                         </div>
                     </a>
                 <?php 
                     }
-                ?>
-
-                <!-- <a href="#">
-                    <div class="headSec">
-                        <div class="headImgSec">
-                            <img src="images/team/2.jpg" alt="">
-                        </div>
-                        <div class="headData text-center">
-                            <a href="#"><h2>Prof. Ghada Amer</h2></a>
-                            <h3>FACULTY ADVISOR</h3>
-                        </div>
-                        <div class="headSocialMedia flex-column">
-                            <a href="#">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
-                    </div>
-                </a> -->
-
-
-                <!-- <a href="#">
-                    <div class="headSec">
-                        <div class="headImgSec">
-                            <img src="images/team/2.jpg" alt="">
-                        </div>
-                        <div class="headData text-center">
-                            <a href="#"><h2>Prof. Ghada Amer</h2></a>
-                            <h3>FACULTY ADVISOR</h3>
-                        </div>
-                        <div class="headSocialMedia flex-column">
-                            <a href="#">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
-                    </div>
-                </a> -->
-                
-                
+                ?>                
             </div>
             <a href="#" class="viewMoreBtn">View More <i class="fas fa-angle-right"></i></a>
         </div>
@@ -250,30 +201,29 @@
                 <h2>WHAT WE FEEL</h2>
             </div>
             <div class="testmonial-slider d-flex justify-content-center text-center">
+                <?php 
+                    $allTestmonials = allTestmonials();
+                    foreach($allTestmonials as $allTestmonial){
+                ?>
                 <div class="testmonial-item">
-                    <p class="testmonial-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam doloribus animi, distinctio aliquid, aut possimus impedit expedita, quisquam fuga explicabo consequatur ducimus sunt nam exercitationem esse. Animi nulla non labore ea tempora, soluta vero atque autem aliquid dicta reprehenderit. Voluptates corporis, quod aspernatur facere quidem quia suscipit sint autem asperiores commodi expedita ratione dicta molestiae ut quos delectus reiciendis ipsa.</p>
+                    <p class="testmonial-text"><?php echo $allTestmonial['opinion'] ?></p>
                     <div class="testmonial-data d-flex flex-column align-items-center">
-                        <img src="images/team/2.jpg" class="rounded-circle" alt="member-image">
-                        <h2 class="textmonial-name">Mohamed F. Razzk</h2>
-                        <h3 class="testmonial-role">IT Manager</h3>
+                        <?php 
+                            if(empty($allTestmonial['photo'])){?>
+                                <img src="Dashboard/img/opinions/default.jpg" class="rounded-circle" alt="member-image">
+                        <?php
+                            } else {?>
+                                <img src="Dashboard/img/opinions/<?php echo $allTestmonial['photo']?>" class="rounded-circle" alt="member-image">
+                        <?php
+                            }
+                        ?>
+                        <h2 class="textmonial-name"><?php echo $allTestmonial['first_name'] . " " . $allTestmonial['last_name'] ?></h2>
+                        <h3 class="testmonial-role"><?php echo $allTestmonial['position'] . " of " .  $allTestmonial['commity'] ?></h3>
                     </div>
                 </div>
-                <div class="testmonial-item">
-                    <p class="testmonial-text">Lorem, ipsum doloelectus reiciendis ipsa.</p>
-                    <div class="testmonial-data d-flex flex-column align-items-center">
-                        <img src="images/team/2.jpg" class="rounded-circle" alt="member-image">
-                        <h2 class="textmonial-name">Mohamed F. Razzk</h2>
-                        <h3 class="testmonial-role">IT Manager</h3>
-                    </div>
-                </div>
-                <div class="testmonial-item">
-                    <p class="testmonial-text">Lorem, ipsum dolor sit amet aliquid, aut possimus impedit expedita, quisquam fuga explicabo consequatur ducimus sunt nam exercitationem esse. Animi nulla non labore ea tempora, soluta vero atque autem aliquid dicta reprehenderit. Voluptates corporis, quod aspernatur facere quidem quia suscipit sint autem asperiores commodi expedita ratione dicta molestiae ut quos delectus reiciendis ipsa.</p>
-                    <div class="testmonial-data d-flex flex-column align-items-center">
-                        <img src="images/team/2.jpg" class="rounded-circle" alt="member-image">
-                        <h2 class="textmonial-name">Mohamed F. Razzk</h2>
-                        <h3 class="testmonial-role">IT Manager</h3>
-                    </div>
-                </div>
+                <?php
+                    }
+                ?>
             </div>
         </div>
     </div>

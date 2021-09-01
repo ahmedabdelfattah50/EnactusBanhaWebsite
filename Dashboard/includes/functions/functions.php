@@ -132,15 +132,16 @@ function addCollage($name){
 ==========================
 */
 
-function addOpinion($first_name, $last_name, $email, $commity, $position, $opinion){
+function addOpinion($first_name, $last_name, $email, $opinionPhoto, $commity, $position, $opinion){
     global $con;
     
-    $stmt = $con->prepare("INSERT INTO opinion(first_name, last_name, email, commity, position, opinion) Value(:first_name, :last_name, :email, :commity, :position, :opinion)");
+    $stmt = $con->prepare("INSERT INTO opinion(first_name, last_name, email, photo, commity, position, opinion) Value(:first_name, :last_name, :email, :photo, :commity, :position, :opinion)");
     $stmt->execute(
     array(
         ":first_name" => $first_name, 
         ":last_name" => $last_name, 
         ":email" => $email, 
+        ":photo" => $opinionPhoto, 
         ":commity" => $commity, 
         ":position" => $position, 
         ":opinion" => $opinion
@@ -222,11 +223,11 @@ function updateCollage($name, $collageId){
 ==========================
 */
 
-function updateOpinion($first_name, $last_name, $email, $commity, $position, $opinion, $opinionId){
+function updateOpinion($first_name, $last_name, $email, $opinionPhoto, $commity, $position, $opinion, $opinionId){
     global $con;
-    $stmt = $con->prepare("UPDATE opinion SET first_name = ?, last_name = ?, email = ?, commity = ?, position = ?, opinion = ? WHERE id =?");
+    $stmt = $con->prepare("UPDATE opinion SET first_name = ?, last_name = ?, email = ?, photo = ?, commity = ?, position = ?, opinion = ? WHERE id =?");
     $stmt->execute(
-        array($first_name, $last_name, $email, $commity, $position, $opinion, $opinionId)
+        array($first_name, $last_name, $email, $opinionPhoto, $commity, $position, $opinion, $opinionId)
     );
     echo "
     <script>
@@ -876,4 +877,20 @@ function selectPosition(){
     $stmt = $con->prepare("SELECT * FROM position Where name!=?");
     $stmt->execute(array('Member'));
     return $stmt->fetchAll();
+}
+
+// select allTestmonials
+function allTestmonials() {
+    global $con; 
+    $stmt = $con->prepare("SELECT * FROM opinion");
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
+// select aboutUsData
+function aboutUsData() {
+    global $con; 
+    $stmt = $con->prepare("SELECT * FROM about_us");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

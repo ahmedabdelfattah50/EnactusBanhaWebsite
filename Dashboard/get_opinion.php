@@ -30,7 +30,16 @@
             <div class="ui cards mb-3 text-center">
                 <div class="card">
                     <div class="content">
-                    <img style="margin: 20px 0;width:30%" src="img/testimonial.gif" alt="testimonial">
+                    <?php 
+                        if(empty($all_opinion["photo"])){ ?>
+                            <img style="margin: 20px 0;width:30%" src="img/opinions/default.jpg
+                            " alt="testimonial">
+                    <?php
+                        } else { ?>
+                            <img style="margin: 20px 0;width:30%" src="img/opinions/<?php echo $all_opinion["photo"] ?>" alt="testimonial">
+                    <?php 
+                        }
+                    ?>
                     <div class="header pb-3">
                         <?php echo $all_opinion["opinion"];?>
                         <span style="font-size: 9px;" class="meta">

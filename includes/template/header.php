@@ -1,3 +1,6 @@
+<?php 
+    // include $funPath . "functions.php"; 
+?>
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
@@ -45,8 +48,25 @@
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($pageActive == "aboutUs") ? "active" : "" ?>" href="aboutUs.php">About Us</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php echo ($pageActive == "events") ? "active" : "" ?>" href="events.php">Events</a>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link <php echo ($pageActive == "events") ? "active" : "" ?>" href="events.php">Events</a>
+                        </li> -->
+
+                        
+                        
+                        <li class="nav-item dropdown ourServicesDropDown">
+                            <a class="nav-link dropdown-toggle <?php echo ($pageActive == "events") ? "active" : "" ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Events
+                            </a>
+                            <div class="dropdown-menu companyServicesMenu">
+                                <?php 
+                                    $eventsData = getAllData("event");                                    
+                                    foreach($eventsData as $eventData){ ?>
+                                        <a class="dropdown-item" href="event_data.php?event=<?php echo $eventData['id']?>"><?php echo $eventData['e_name'] ?></a>                              
+                                    <?php
+                                        }
+                                    ?>
+                            </div>
                         </li>
                         <li class="nav-item dropdown ourServicesDropDown">
                             <a class="nav-link dropdown-toggle <?php echo ($pageActive == "commtees") ? "active" : "" ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
