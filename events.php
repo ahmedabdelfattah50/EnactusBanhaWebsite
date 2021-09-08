@@ -4,7 +4,7 @@
     $pageStyle = "events.css";
     $pageActive = "events";
        
-    include "init.php";
+    include "init.php"; 
 ?>
 <!-- ============== End header =============== -->
     <!-- ============== Start go_up icon =============== -->

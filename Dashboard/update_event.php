@@ -146,11 +146,11 @@
             <select class="custom-select ui search dropdown"  name="year" id="year">
                 <option selected disabled value="">Choose...</option>
                 <?php foreach($seasonNames as $seasonName){
-                    if($seasonName['year'] == $result['e_season']){?>
-                        <option value="<?php echo $seasonName['year']?>" selected><?php echo $seasonName['year']?></option>
+                    if($seasonName['id'] == $result['e_season']){?>
+                        <option value="<?php echo $seasonName['id']?>" selected><?php echo $seasonName['year']?></option>
                     <?php
                     } else { ?>
-                        <option value="<?php echo $seasonName['year']?>"><?php echo $seasonName['year']?></option>
+                        <option value="<?php echo $seasonName['id']?>"><?php echo $seasonName['year']?></option>
                     <?php } ?>
                 <?php } ?>
             </select>

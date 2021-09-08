@@ -12,6 +12,7 @@
     --grayColor5: rgb(112, 111, 111);
     --grayColor6: #707070;
     --grayColor7: rgb(75, 73, 73);
+    --grayColor8: #C0C0C0;
     --facebookColor: #4267B2;
     --twitterColor: #1DA1F2;
     --instgramColor: #c75a98c4;
@@ -95,7 +96,7 @@
     margin: 0;
     text-transform: capitalize;
     font-weight: normal;
-}
+} 
 
 .commteeDescription .commteeData .commteeLeaders a {
     color: var(--lightColor);
@@ -195,6 +196,20 @@
     left: -30px;
     transform: rotate(-40deg);
     color: var(--mainColor2);
+    text-shadow: 0 0 30px red;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f521";
+    font-size: 45px;
+}
+
+.commteeMembers .memberSec.viceCommtee::before {
+    position: absolute;
+    content: '';
+    top: -40px;
+    left: -30px;
+    transform: rotate(-40deg);
+    color: var(--grayColor8);
     font-family: "Font Awesome 5 Free"; 
     font-weight: 900; 
     content: "\f521";

@@ -307,7 +307,6 @@ function selectOldMembers(){
     return $stmt->fetchAll();
 }
 
-
 /*
 ==========================  
   get all data with id  By/ Amr Mohamed
@@ -329,11 +328,53 @@ function selectHighBoard(){
     $stmtActiveSeason = $con->prepare("SELECT * FROM season WHERE active_season=1");
     $stmtActiveSeason->execute();
     $activeSeasonData = $stmtActiveSeason->fetch(PDO::FETCH_ASSOC);
-    $activeSeasonYear = $activeSeasonData['year'];
+    $activeSeasonYear = $activeSeasonData['id'];
 
-    $stmt = $con->prepare("SELECT * FROM hosters WHERE season_year ='" . trim($activeSeasonYear) . "' AND old = 0");
+    $stmt = $con->prepare("SELECT * FROM hosters WHERE season_year ='" . $activeSeasonYear . "' AND old = 0");
     $stmt->execute();
     return $stmt->fetchAll();
+}
+
+// select HighBoard
+function newBoardPresidentWithActiveSeason(){
+    global $con; 
+    $stmtActiveSeason = $con->prepare("SELECT * FROM season WHERE active_season=1");
+    $stmtActiveSeason->execute();
+    $activeSeasonData = $stmtActiveSeason->fetch(PDO::FETCH_ASSOC);
+    $activeSeasonYear = $activeSeasonData['id'];
+
+    $stmt = $con->prepare("SELECT * FROM hosters WHERE (position_name = 'President' AND season_year ='" . $activeSeasonYear . "' AND old = 0)");
+    $stmt->execute();
+    $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $rows;
+}
+
+// select HighBoard
+function newBoardVicePresidentWithActiveSeason(){
+    global $con; 
+    $stmtActiveSeason = $con->prepare("SELECT * FROM season WHERE active_season=1");
+    $stmtActiveSeason->execute();
+    $activeSeasonData = $stmtActiveSeason->fetch(PDO::FETCH_ASSOC);
+    $activeSeasonYear = $activeSeasonData['id'];
+
+    $stmt = $con->prepare("SELECT * FROM hosters WHERE ((position_name = 'Vice President') AND season_year ='" . $activeSeasonYear . "' AND old = 0)");
+    $stmt->execute();
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $rows;
+}
+
+// select HighBoard
+function newBoardProjectManagerWithActiveSeason(){
+    global $con; 
+    $stmtActiveSeason = $con->prepare("SELECT * FROM season WHERE active_season=1");
+    $stmtActiveSeason->execute();
+    $activeSeasonData = $stmtActiveSeason->fetch(PDO::FETCH_ASSOC);
+    $activeSeasonYear = $activeSeasonData['id'];
+
+    $stmt = $con->prepare("SELECT * FROM hosters WHERE ((position_name = 'Project Manager') AND season_year ='" . $activeSeasonYear . "' AND old = 0)");
+    $stmt->execute();
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $rows;
 }
 
 // select HighBoard
@@ -342,9 +383,9 @@ function newBoardWithActiveSeason(){
     $stmtActiveSeason = $con->prepare("SELECT * FROM season WHERE active_season=1");
     $stmtActiveSeason->execute();
     $activeSeasonData = $stmtActiveSeason->fetch(PDO::FETCH_ASSOC);
-    $activeSeasonYear = $activeSeasonData['year'];
+    $activeSeasonYear = $activeSeasonData['id'];
 
-    $stmt = $con->prepare("SELECT * FROM hosters WHERE ((position_name = 'Head' OR position_name = 'President' OR position_name = 'Vice President' OR position_name = 'Project Director') AND season_year ='" . trim($activeSeasonYear) . "' AND old = 0)");
+    $stmt = $con->prepare("SELECT * FROM hosters WHERE ((position_name = 'Head') AND season_year ='" . $activeSeasonYear . "' AND old = 0)");
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
@@ -503,8 +544,19 @@ count Rows of old high board from Database By/ Amr Mohamed
 
 function count_new_highBoard(){
     global $con;
-    $stmt = $con->prepare("SELECT COUNT(id) From hosters WHERE old=0");
-    $stmt->execute();
+    $stmtActiveSeason = $con->prepare("SELECT * FROM season WHERE active_season=1");
+    $stmtActiveSeason->execute();
+    $activeSeasonData = $stmtActiveSeason->fetch(PDO::FETCH_ASSOC);
+    $activeSeasonYear = $activeSeasonData['id'];
+
+    // $stmt = $con->prepare("SELECT COUNT(id) From hosters WHERE old=0");
+    // $stmt->execute();
+
+    // $stmt = $con->prepare("SELECT COUNT(id) From hosters WHERE season_year=? AND old=0");
+    // $stmt->execute(array($activeSeasonYear));
+
+    $stmt = $con->prepare("SELECT COUNT(id) FROM hosters WHERE season_year ='" . $activeSeasonYear . "' AND old = 0");
+
     $rows = $stmt->fetchColumn();
     return $rows;
 }
@@ -695,6 +747,30 @@ function updateCommitte($name, $abbreviation, $describtion,$committeId){
         toastr.success('Update , Committe INFO has Been Successfully Update.')
     </script>";
     header("Refresh:1;url=commities.php");
+}
+
+
+/*
+==========================  
+  update SeasonTimer
+==========================
+*/
+
+function updateSeasonTimer($date, $hours, $minutes, $seconds){
+    global $con;
+    $stmt = $con->prepare("UPDATE season_timer SET date = ?, hours = ?, minutes = ?, seconds = ? WHERE id = 1");
+    $stmt->execute(
+    array(
+        $date,
+        $hours,
+        $minutes,
+        $seconds,
+    )); 
+    echo "
+    <script>
+        toastr.success('Update , Season Timer INFO has Been Successfully Update.')
+    </script>";
+    header("Refresh:1;url=seasonTimer.php");
 }
 
 
@@ -891,6 +967,73 @@ function allTestmonials() {
 function aboutUsData() {
     global $con; 
     $stmt = $con->prepare("SELECT * FROM about_us");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// return the data of all heads of commity
+// function commityPresidents($commity){
+//     global $con; 
+//     $stmtActiveSeason = $con->prepare("SELECT * FROM season WHERE active_season=1");
+//     $stmtActiveSeason->execute();
+//     $activeSeasonData = $stmtActiveSeason->fetch(PDO::FETCH_ASSOC);
+//     $activeSeasonYear = $activeSeasonData['id']; 
+     
+//     $stmt = $con->prepare("SELECT * FROM hosters WHERE (position_name = 'President' AND commity_name= '" . $commity . "' AND season_year = '" . $activeSeasonYear . "' AND old = 0)");
+//     $stmt->execute();
+//     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+// }
+
+
+// return the data of all heads of commity
+function commityPresidents($commity){
+    global $con; 
+    $stmt = $con->prepare("SELECT * FROM hosters WHERE (position_name = 'President' AND commity_name= '" . $commity . "')");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// return the data of all heads of commity
+function commityVicePresidents($commity){
+    global $con; 
+    $stmt = $con->prepare("SELECT * FROM hosters WHERE (position_name = 'Vice President' AND commity_name= '" . $commity . "')");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// return the data of all heads of commity
+function commityProjectManagers($commity){
+    global $con; 
+    $stmt = $con->prepare("SELECT * FROM hosters WHERE (position_name = 'Project Manager' AND commity_name= '" . $commity . "')");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// return the data of all heads of commity
+function commityHeads($commity){
+    global $con;      
+    $stmt = $con->prepare("SELECT * FROM hosters WHERE (position_name = 'Head' AND commity_name= '" . $commity . "')");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// return the data of all heads of commity
+function commityViceHeads($commity){
+    global $con; 
+    $stmt = $con->prepare(
+            "SELECT * FROM hosters WHERE (position_name = 'Vice Head' AND commity_name= '" . $commity . "')");
+
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+// return the data of all heads of commity
+function commityMembers($commity){
+    global $con; 
+    $stmt = $con->prepare(
+            "SELECT * FROM members WHERE (commity= '" . $commity . "')");
+
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

@@ -12,6 +12,7 @@
     --grayColor5: rgb(112, 111, 111);
     --grayColor6: #707070;
     --grayColor7: rgb(75, 73, 73);
+    --grayColor8: #C0C0C0;
     --facebookColor: #4267B2;
     --twitterColor: #1DA1F2;
     --instgramColor: #c75a98c4;
@@ -187,7 +188,6 @@ main .carousel img {
 
 .ourHeads .allHeads {
     flex-wrap: wrap;
-    margin-bottom: 40px;
 }
 
 .ourHeads .allHeads a {
@@ -271,6 +271,46 @@ main .carousel img {
 .ourHeads .viewMoreBtn:hover {
     box-shadow: 0 0 20px var(--grayColor);
     padding: 10px 60px;
+}
+
+.ourHeads .allHeads .headSec.president::before {
+    position: absolute;
+    content: '';
+    top: -40px;
+    left: -30px;
+    transform: rotate(-40deg);
+    color: var(--mainColor2);
+    text-shadow: 0 0 30px red;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f521";
+    font-size: 45px;
+}
+
+.ourHeads .allHeads .headSec.vicePresident::before {
+    position: absolute;
+    content: '';
+    top: -40px;
+    left: -30px;
+    transform: rotate(-40deg);
+    color: var(--grayColor8);
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f521";
+    font-size: 45px;
+}
+
+.ourHeads .allHeads .headSec.projectManger::before {
+    position: absolute;
+    content: '';
+    top: -40px;
+    left: -30px;
+    transform: rotate(-40deg);
+    color: #9c7c38;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f521";
+    font-size: 45px;
 }
 /* ============== End ourHeads =============== */
 /* ============== Start partnersSponsers =============== */
@@ -448,7 +488,7 @@ main .carousel img {
     background-image: url('../../images/backgrounds/backCamera.jpg');
     position: relative;
     z-index: 0;
-}
+} 
 
 .ourBlog::after {
     content: '';

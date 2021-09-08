@@ -217,6 +217,12 @@
           <a href="get_opinion.php" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
           <i class="fa fa-users fa-2x icon"></i>
         </div><!-- ./dashItem -->
+        <div class="dashItem color4  rounded">
+          <h3 class="itemNum">M D h:m:s</h3>
+          <h4 class="itemName">Season Timer</h4>
+          <a href="seasonTimer.php" class="lets">Lets Go <i class="fal fa-arrow-alt-right"></i></a>
+          <i class="fa fa-users fa-2x icon"></i>
+        </div><!-- ./dashItem -->
       </div><!-- ./dashItem -->
 
       </div><!-- ./row --> 

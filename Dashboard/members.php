@@ -43,6 +43,11 @@ if(isset($_SESSION['first_name'])){
                   }
                 ?>
               </div>
+              <?php if(empty($members_data)){?>
+                <div class="alert alert-danger">Sorry, No Data Found</div>
+              <?php
+              } else {
+              ?>
               <table class="table table-striped table-bordered table-hover table-responsive">
                 <thead>
                   <tr>
@@ -73,7 +78,10 @@ if(isset($_SESSION['first_name'])){
                     <td><?php echo $members_data_info['email']?></td>
                     <td><?php echo $members_data_info['phone']?></td>
                     <td><?php echo $members_data_info['commity']?></td>
-                    <td><?php echo $members_data_info['season']?></td>
+                    <td><?php 
+                      $seasonData = getData_with_id('season',$members_data_info['season']);
+                      echo $seasonData['year'];
+                    ?></td>
                     <td><?php echo $members_data_info['collage_name']?></td>
                     <td><?php echo $members_data_info['collage_year']?></td>
                     <td>
@@ -90,6 +98,9 @@ if(isset($_SESSION['first_name'])){
                   ?>
                 </tbody>
               </table>
+              <?php 
+              }
+              ?>
             </div>
             <!-- /.card-body -->
           </div>

@@ -47,13 +47,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($pageActive == "aboutUs") ? "active" : "" ?>" href="aboutUs.php">About Us</a>
-                        </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link <php echo ($pageActive == "events") ? "active" : "" ?>" href="events.php">Events</a>
-                        </li> -->
-
-                        
-                        
+                        </li>                   
                         <li class="nav-item dropdown ourServicesDropDown">
                             <a class="nav-link dropdown-toggle <?php echo ($pageActive == "events") ? "active" : "" ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Events
@@ -62,10 +56,10 @@
                                 <?php 
                                     $eventsData = getAllData("event");                                    
                                     foreach($eventsData as $eventData){ ?>
-                                        <a class="dropdown-item" href="event_data.php?event=<?php echo $eventData['id']?>"><?php echo $eventData['e_name'] ?></a>                              
-                                    <?php
-                                        }
-                                    ?>
+                                        <a class="dropdown-item" href="event_data.php?event=<?php echo urlencode(base64_encode($eventData['id']))?>"><?php echo $eventData['e_name'] ?></a>                              
+                                <?php
+                                    }
+                                ?>
                             </div>
                         </li>
                         <li class="nav-item dropdown ourServicesDropDown">
@@ -73,10 +67,13 @@
                                 Commtees
                             </a>
                             <div class="dropdown-menu companyServicesMenu">
-                                <a class="dropdown-item" href="commtee.php">IT</a>
-                                <a class="dropdown-item" href="#">PM</a>                              
-                                <a class="dropdown-item" href="#">Media</a>                              
-                                <a class="dropdown-item" href="#">HR</a>                              
+                                <?php 
+                                    $commiteesData = getAllData("commity");                                    
+                                    foreach($commiteesData as $commiteeData){ ?>
+                                        <a class="dropdown-item" href="commtee.php?commtee=<?php echo urlencode(base64_encode($commiteeData['id']))?>"><?php echo $commiteeData['name'] ?></a>                              
+                                <?php
+                                    }
+                                ?>
                             </div>
                         </li>
                         <li class="nav-item">

@@ -48,7 +48,12 @@ if(isset($_SESSION['first_name'])){
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo $events_data_info['e_name']?></h5>
                                         <p class="card-text"><?php echo $events_data_info['descrip']?></p>
-                                        <p class="card-text"><small class="text-muted"><?php echo $events_data_info['e_season']?></small></p>
+                                        <p class="card-text"><small class="text-muted">
+                                          <?php 
+                                            $seasonData = getData_with_id('season',$events_data_info['e_season']);
+                                            echo $seasonData['year'];
+                                            ?>
+                                        </small></p>
                                         <a href="event_view.php?id=<?php echo  $events_data_info['id'];?>"class="m-2 btn btn-sm btn-light">More...</a>
                                     </div>
                                 </div>

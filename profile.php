@@ -1,70 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Commtee</title>
-    <link rel="icon" href="images/enactus_icon.png">
-    <link rel="stylesheet" href="CSS/bootrap_ltr_4.5.3.min.css">
-    <link rel="stylesheet" href="CSS/all.css" />
-    <link rel="stylesheet" href="CSS/fancyBox.min.css" />
-    <link rel="stylesheet" href="CSS/slick.css" />
-    <link rel="stylesheet" href="CSS/slick-theme.css" />
-    <link rel="stylesheet" href="CSS/basics.css" />
-    <link rel="stylesheet" href="CSS/profile.css" />
-</head>
-<body>
-    <!-- ============== Start Navbar =============== -->    
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/encatus_logo.png" alt="">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="container">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav col-12 d-flex justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="aboutUs.html">About Us</a>
-                        </li>
-                        <li class="nav-item"> 
-                            <a class="nav-link" href="events.html">Events</a>
-                        </li>
-                        <li class="nav-item dropdown ourServicesDropDown">
-                            <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Commtees
-                            </a>
-                            <div class="dropdown-menu companyServicesMenu">
-                                <a class="dropdown-item" href="commtee.html">IT</a>
-                                <a class="dropdown-item" href="#">PM</a>                              
-                                <a class="dropdown-item" href="#">Media</a>                              
-                                <a class="dropdown-item" href="#">HR</a>                              
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown ourServicesDropDown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                More
-                            </a>
-                            <div class="dropdown-menu companyServicesMenu">
-                                <a class="dropdown-item" href="gallary.html">Gallary</a>
-                                <a class="dropdown-item" href="#">Video</a>                              
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- ============== End Navbar =============== -->
+
+<!-- ============== Start header =============== -->
+<?php 
+    $pageTitle = "Enactus Profile";
+    $pageStyle = "profile.css";
+    $pageActive = "commtees";
+       
+    include "init.php";
+    if (isset($_GET['person']) && isset($_GET['id']) && isset($_GET['commity'])){
+        if($_GET['person'] == "head"){
+            $person_type = 'hosters';
+        } else if($_GET['person'] == "vice_head"){
+            $person_type = 'hosters';
+        } else if($_GET['person'] == "member"){
+            $person_type = 'members';
+        }
+        
+        $commity_id = base64_decode(urldecode($_GET['commity']));
+        $person_id = base64_decode(urldecode($_GET['id']));
+        
+        $personData = getData_with_id($person_type,$person_id);
+?>
+<!-- ============== End header =============== -->
     <!-- ============== Start go_up icon =============== -->
     <i class="fas fa-angle-double-up go_up"><a href="#"></a></i>
     <!-- ============== End go_up icon =============== -->
@@ -72,59 +28,151 @@
     <div class="pageHeader">
         <div class="container">
             <div class="pageHeaderHeader">
-                <h2>Ahmed Abdel-Fattah</h2>
-                <h3><a href="index.html">Home </a><i class="fas fa-chevron-right"></i><a href="gallary.html"> Ahmed Abdel-Fattah</a></h3>
+                <h2><?php echo $personData['first_name'] . " " . $personData['last_name'] ?></h2>
+                <?php 
+                    if($person_type == "hosters"){
+                ?>
+                    <h3><a href="index.php">Home </a><i class="fas fa-chevron-right"></i><a href="commtee.php?commtee=<?php echo urlencode(base64_encode($commity_id)) ?>"> <?php echo $personData['commity_name']?> Commity</a></h3>
+                <?php 
+                    } else if($person_type == "members"){
+                ?>
+                    <h3><a href="index.php">Home </a><i class="fas fa-chevron-right"></i><a href="commtee.php?commtee=<?php echo urlencode(base64_encode($commity_id)) ?>"> <?php echo $personData['commity']?> Commity</a></h3>
+                <?php 
+                    }
+                ?>
             </div>
         </div>
     </div>
-    
     <!-- ============== End pageHeader =============== -->
     <!-- ============== Start personProfile =============== -->
+    <?php 
+        if($person_type == "hosters"){
+    ?>
     <div class="personProfile">
         <div class="container">
-            <h2 class="personHeader text-center">Ahmed Abdel-Fattah</h2>
+            <h2 class="personHeader text-center"><?php echo $personData['first_name'] . " " . $personData['last_name'] ?></h2>
             <div class="personData">
                 <div class="personImg d-flex justify-content-center">
-                    <img src="images/team/2.jpg" alt="">
+                    <?php 
+                        if(empty($personData['photo'])){ ?>
+                            <img src="Dashboard/img/default.jpg" alt="">
+                    <?php
+                        }else {
+                    ?>
+                        <img src="Dashboard/img/hosters/<?php echo $personData['photo']?>" alt="">
+                    <?php 
+                        }
+                    ?>
                 </div>
                 <div class="personInfo">
-                    <h2>Name : <span>Ahmed Abdel-Fattah</span></h2>
-                    <h2>Age : <span>22</span></h2>
-                    <h2>Faculty : <span>Computers & Artificial Intelligence</span></h2>
-                    <h2>University : <span>Banha University</span></h2>
-                    <h2>Class : <span>Graduated</span></h2>
-                    <h2>Commtee : <span>IT</span></h2>
-                    <h2>Commtee Position : <span>Head</span></h2>
-                    <h2 class="detailsHeader">Details : <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima fuga ut illum optio, sequi aut impedit assumenda tempore! Cupiditate molestiae modi, sunt ad eos amet excepturi quibusdam in libero expedita.</span></h2>
+                    <h2>Name : <span><?php echo $personData['first_name'] . " " . $personData['last_name'] ?></span></h2>
+                    <h2>Faculty : <span><?php echo $personData['college_name'] ?></span></h2>
+                    <h2>University : <span><?php echo $personData['university_name'] ?> University</span></h2>
+                    <h2>Class : <span><?php echo $personData['college_year'] ?></span></h2>
+                    <h2>Commtee : <span><?php echo $personData['commity_name']?> Commity</span></h2>
+                    <h2>Commtee Position : <span><?php echo $personData['position_name']?> of <?php echo $personData['commity_name']?></span></h2>
+                    <h2 class="detailsHeader">Details : <span><?php echo $personData['about_hoster']?></span></h2>
                     <h2 class="socialMediaIcons">Social Media : 
-                        <a href="#">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+                        <?php 
+                            if(!empty($personData['facebook'])){?>
+                                <a href="<?php echo $personData['facebook']?>" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                        <?php
+                            }
+                            if(!empty($personData['instgram'])){?>
+                                <a href="<?php echo $personData['instgram']?>" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                        <?php
+                            }
+                            if(!empty($personData['twitter'])){?>
+                                <a href="<?php echo $personData['twitter']?>" target="_blank">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                        <?php
+                            }
+                            if(!empty($personData['linked_in'])){?>
+                                <a href="<?php echo $personData['linked_in']?>" target="_blank">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                        <?php
+                            }
+                        ?>
                     </h2>
-                    <h2 class="phoneNumberSec">Phone Number <i class="fas fa-mobile-alt"></i> : <span>01022635745</span></h2>
-                    <h2 class="WhatsappNumberSec">Whatsapp Number <i class="fab fa-whatsapp"></i> : <span>01022635745</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php 
+        } else if($person_type == "members"){
+    ?>
+    <div class="personProfile">
+        <div class="container">
+            <h2 class="personHeader text-center"><?php echo $personData['first_name'] . " " . $personData['last_name'] ?></h2>
+            <div class="personData">
+                <div class="personImg d-flex justify-content-center">
+                    <?php 
+                        if(empty($personData['img'])){ ?>
+                            <img src="Dashboard/img/default.jpg" alt="">
+                    <?php
+                        }else {
+                    ?>
+                        <img src="Dashboard/img/members/<?php echo $personData['img']?>" alt="">
+                    <?php 
+                        }
+                    ?>
+                </div>
+                <div class="personInfo">
+                    <h2>Name : <span><?php echo $personData['first_name'] . " " . $personData['last_name'] ?></span></h2>
+                    <h2>Faculty : <span><?php echo $personData['collage_name'] ?></span></h2>
+                    <h2>University : <span><?php echo $personData['university'] ?> University</span></h2>
+                    <h2>Class : <span><?php echo $personData['collage_year'] ?></span></h2>
+                    <h2>Commtee : <span><?php echo $personData['commity']?> Commity</span></h2>
+                    <h2>Commtee Position : <span>Member at <?php echo $personData['commity']?></span></h2>
+                    <h2 class="detailsHeader">Details : <span><?php echo $personData['about']?></span></h2>
+                    <h2 class="socialMediaIcons">Social Media : 
+                    <?php 
+                        if(!empty($commityMember['facebook'])){?>
+                            <a href="<?php echo $commityMember['facebook']?>" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                    <?php
+                        }
+                        if(!empty($commityMember['insta'])){?>
+                            <a href="<?php echo $commityMember['insta']?>" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                    <?php
+                        }
+                        if(!empty($commityMember['twitter'])){?>
+                            <a href="<?php echo $commityMember['twitter']?>" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                    <?php
+                        }
+                        if(!empty($commityMember['linked_in'])){?>
+                            <a href="<?php echo $commityMember['linked_in']?>" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                    <?php
+                        }
+                        if(empty($commityMember['facebook']) && empty($commityMember['insta']) && empty($commityMember['twitter']) && empty($commityMember['linked_in'])){?>
+                            <a style="cursor: no-drop">
+                                sorry, no Social media provided
+                            </a>
+                        <?php 
+                        }
+                        ?>
+                    </h2>
                 </div>
             </div>
         </div>
     </div>
     <!-- ============== End personProfile =============== -->
-    <!-- ============== JavaScripts =============== -->
-    <script src="JS/jquery_3.6.0.min.js"></script>
-    <script src="JS/propper.js"></script>
-    <script src="JS/bootstrap_ltr_4.5.3.bundle.min.js"></script>
-    <script src="JS/slick.min.js"></script>
-    <script src="JS/fancyBox.min.js"></script>
-    <script src="JS/mixitup.min.js"></script>
-    <script src="JS/basics.js"></script>
-    <script src="JS/main.js"></script>
-</body>
-</html>
+    <?php 
+        }
+    } else {
+        header("location:dashboard.php");
+    }
+    ?>

@@ -117,7 +117,7 @@ $seasonNames = selectSeason();
             <select class="custom-select ui search dropdown"  name="season" id="season" required>
                 <option selected disabled value="">Choose...</option>
                 <?php foreach($seasonNames as $seasonName){?>
-                <option value="<?php echo $seasonName['year']?>"><?php echo $seasonName['year']?></option>
+                <option value="<?php echo $seasonName['id']?>"><?php echo $seasonName['year']?></option>
                 <?php } ?>
             </select>
         </div>

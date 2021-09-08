@@ -31,9 +31,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["first_name"]) && !empt
     $size                   = $_FILES["img"]["size"];
     $tmp_name               = $_FILES["img"]["tmp_name"];
     $type                   = $_FILES["img"]["type"];
-    $ext_allowed            = array("png","jpg","jpeg","mp4","");
-    @$extention             = strtolower(end(explode(".",$avatar_name)));
-    if(in_array($extention,$ext_allowed)){
+    // $ext_allowed            = array("png","jpg","jpeg","mp4","");
+    // @$extention             = strtolower(end(explode(".",$avatar_name)));
+    // if(in_array($extention,$ext_allowed)){
         $avatar = rand(0,1000000) . "_" . $avatar_name ;
         $destination = "img/hosters/" . $avatar ;
 
@@ -53,9 +53,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["first_name"]) && !empt
             insert_hoster ($first_name , $last_name , $email , $password , $phone , $birthday , $position , $commity ,$season ,$university ,$collage_name ,$collage_year ,$about ,$facebook ,$twitter ,$insta ,$linked_in,$avatar ,$old);
             move_uploaded_file($tmp_name,$destination);
         }   
-    }else{
-        echo "error";
-    }    
+    // }
+    
+    // else{
+    //     echo "error";
+    // }    
     // insert_admin($name,$email,$hased,$gender);
 };
 
@@ -134,7 +136,7 @@ $positionNames = selectPosition();
             <select class="custom-select ui search dropdown"  name="season" id="season" required>
                 <option selected disabled value="">Choose...</option>
                 <?php foreach($seasonNames as $seasonName){?>
-                <option value="<?php echo $seasonName['year']?>"><?php echo $seasonName['year']?></option>
+                <option value="<?php echo $seasonName['id']?>"><?php echo $seasonName['year']?></option>
                 <?php } ?>
             </select>
         </div>
@@ -187,7 +189,7 @@ $positionNames = selectPosition();
         
         <div class="form-group col-md-6">
             <label>Linked In</label>
-            <input style="direction: ltr;" name="old" type="url" class="form-control">
+            <input style="direction: ltr;" name="linked_in" type="url" class="form-control">
         </div>
         
         <div class="form-group col-md-6 d-none">

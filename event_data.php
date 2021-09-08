@@ -5,10 +5,10 @@
     $pageActive = "events";
        
     include "init.php";
-    if (isset($_GET['event']) && is_numeric($_GET['event'])){
-        $event_id = $_GET['event'];
+    if (isset($_GET['event'])){
+        $event_id = base64_decode(urldecode($_GET['event']));
         $eventData = getData_with_id("event",$event_id);
-?>
+?>  
 <!-- ============== End header =============== -->
     <!-- ============== Start go_up icon =============== -->
     <i class="fas fa-angle-double-up go_up"><a href="#"></a></i>
@@ -18,7 +18,7 @@
         <div class="container">
             <div class="pageHeaderHeader">
                 <h2>Events</h2>
-                <h3><a href="index.html">Home </a><i class="fas fa-chevron-right"></i><a href="events.html"> Events</a></h3>
+                <h3><a href="index.php">Home </a><i class="fas fa-chevron-right"></i><a href="event_data.php?event=<?php echo $eventData['id']?>"> Events</a></h3>
             </div>
         </div>
     </div>
@@ -37,7 +37,10 @@
                     <h2>Location : <span><?php echo $eventData['e_location']?></span></h2>
                 </div>
                 <div class="eventDate">
-                    <h2>Season : <span><?php echo $eventData['e_season']?></span></h2>
+                    <h2>Season : <span><?php 
+                    $seasonData = getData_with_id('season',$eventData['e_season']);
+                    echo $seasonData['year'];
+                    ?></span></h2>
                 </div>
                 <div class="eventSpeakers">
                     <h2>Speakers : </h2>
