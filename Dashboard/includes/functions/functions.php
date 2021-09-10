@@ -477,11 +477,10 @@ function  update_hoster ($hoster_id,$first_name , $last_name , $email , $passwor
         $img,
         $old,
         $hoster_id
-
     ));
     echo "
     <script>
-        toastr.success('Great , Hoster INFO has Been Successfully Update  .')
+        toastr.success('Great , Hoster INFO has Been Successfully Update.')
     </script>";
     header("Refresh:3;url=hosters.php");
 }

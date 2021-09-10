@@ -36,7 +36,7 @@
                   <?php } else if($hosterType == 'oldBoard') {?>
                     <a href="add_hoster.php?type=oldBoard" class="btn btn-info">Add <i class="fas fa-user-plus ml-1"></i></a>
                   <?php }
-                ?>
+                ?> 
               </div>
               <?php   
               if(empty($HosterData)){?>

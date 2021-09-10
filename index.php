@@ -474,7 +474,7 @@
                     <a href="event_data.php?event=<?php echo urlencode(base64_encode($allEvent['id']))?>">
                         <div class="blogSec d-flex flex-column align-items-center">
                             <div class="blogImgSec">
-                                <img src="images/team/2.jpg" alt="">
+                                <img src="Dashboard/img/events/<?php echo $allEvent['main_img']?>" alt="">
                             </div>
                             <div class="blogData text-center">
                                 <a href="event_data.php?event=<?php echo urlencode(base64_encode($allEvent['id']))?>"><h2 style="text-transform: uppercase"><?php echo $allEvent['e_name'] ?></h2></a>
@@ -484,32 +484,6 @@
                     </a>
                 </div>
                 <?php }?>
-                <!-- <div class="col-sm-8 col-md-6 col-lg-5 col-xl-4 bigSecBlog">
-                    <a href="#">
-                        <div class="blogSec d-flex flex-column align-items-center">
-                            <div class="blogImgSec">
-                                <img src="images/team/2.jpg" alt="">
-                            </div>
-                            <div class="blogData text-center">
-                                <a href="#"><h2>Prof. Ghada Amer</h2></a>
-                                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </a> 
-                </div> -->
-                <!-- <div class="col-sm-8 col-md-6 col-lg-5 col-xl-4 bigSecBlog">
-                    <a href="#">
-                        <div class="blogSec d-flex flex-column align-items-center">
-                            <div class="blogImgSec">
-                                <img src="images/team/2.jpg" alt="">
-                            </div>
-                            <div class="blogData text-center">
-                                <a href="#"><h2>Prof. Ghada Amer</h2></a>
-                                <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </a> 
-                </div>                  -->
             </div>
         </div>
     </div>

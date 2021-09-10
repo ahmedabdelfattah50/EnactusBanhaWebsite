@@ -80,8 +80,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["first_name"]) && !empt
 
         <div class="form-group col-md-6">
             <label for="commity">Commity</label>
-            <select class="custom-select ui search dropdown"  name="commity" id="commity" required>
-                <option selected value="<?php echo $result['commity'];?>"><?php echo $result['commity'];?></option>
+            <!-- <select class="custom-select ui search dropdown"  name="commity" id="commity" required>
+                <option selected value="<php echo $result['commity'];?>"><php echo $result['commity'];?></option>
                 <option value="IT">IT</option>
                 <option value="PM">PM</option>
                 <option value="HR">HR</option>
@@ -89,8 +89,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["first_name"]) && !empt
                 <option value="Media">Media</option>
                 <option value="ER">ER</option>
                 <option value="Logistics">Logistics</option>
+            </select> -->
+
+            <select class="custom-select ui search dropdown"  name="commity" id="commity" required>
+                <?php foreach($commityNames as $commityName){
+                    if($result['commity'] == $commityName['name']){
+                ?>
+                    <option value="<?php echo $commityName['name']?>" selected><?php echo $commityName['name']?></option>
+                <?php } else { ?>
+                    <option value="<?php echo $commityName['name']?>"><?php echo $commityName['name']?></option>
+                <?php
+                    }
+                }
+                ?>
             </select>
-        </div>
+        </div> 
 
         <div class="form-group col-md-6">
             <label for="season">Season</label>

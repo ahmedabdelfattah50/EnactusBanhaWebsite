@@ -31,34 +31,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["first_name"]) && !empt
     $size                   = $_FILES["img"]["size"];
     $tmp_name               = $_FILES["img"]["tmp_name"];
     $type                   = $_FILES["img"]["type"];
-    // $ext_allowed            = array("png","jpg","jpeg","mp4","");
-    // @$extention             = strtolower(end(explode(".",$avatar_name)));
-    // if(in_array($extention,$ext_allowed)){
-        $avatar = rand(0,1000000) . "_" . $avatar_name ;
-        $destination = "img/hosters/" . $avatar ;
+    $avatar = rand(0,1000000) . "_" . $avatar_name ;
+    $destination = "img/hosters/" . $avatar ;
 
-        /*check if info already added*/
-        global $con;
-        $stmt = $con->prepare("SELECT * FROM hosters WHERE email = ?");
-        $stmt->execute(array($email));
-        $rows = $stmt->fetch(PDO::FETCH_ASSOC);
-        $count = $stmt->rowCount();
-        if ($count){
-            echo "
-                <script>
-                    toastr.error('Sorry This Hoster (Email) is already excit.')
-                </script>";
-        } 
-        else{
-            insert_hoster ($first_name , $last_name , $email , $password , $phone , $birthday , $position , $commity ,$season ,$university ,$collage_name ,$collage_year ,$about ,$facebook ,$twitter ,$insta ,$linked_in,$avatar ,$old);
-            move_uploaded_file($tmp_name,$destination);
-        }   
-    // }
-    
-    // else{
-    //     echo "error";
-    // }    
-    // insert_admin($name,$email,$hased,$gender);
+    /*check if info already added*/
+    global $con;
+    $stmt = $con->prepare("SELECT * FROM hosters WHERE email = ?");
+    $stmt->execute(array($email));
+    $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+    $count = $stmt->rowCount();
+    if ($count){
+        echo "
+            <script>
+                toastr.error('Sorry This Hoster (Email) is already excit.')
+            </script>";
+    } 
+    else{
+        insert_hoster ($first_name , $last_name , $email , $password , $phone , $birthday , $position , $commity ,$season ,$university ,$collage_name ,$collage_year ,$about ,$facebook ,$twitter ,$insta ,$linked_in,$avatar ,$old);
+        move_uploaded_file($tmp_name,$destination);
+    }   
 };
 
 if($_GET['type'] == 'newBoard') {
@@ -158,7 +149,7 @@ $positionNames = selectPosition();
                 <?php foreach($collageNames as $collageName){?>
                 <option value="<?php echo $collageName['name']?>"><?php echo $collageName['name']?></option>
                 <?php } ?>
-            </select>
+            </select> 
         </div>
                 
         <div class="form-group col-md-6">
